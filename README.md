@@ -10,6 +10,28 @@ AI-matched platform for student community service hours.
 - **Organization Portal** — Shift builder, automated verification, waiver gating
 - **Admin Console** — FERPA-compliant compliance master-list, fraud detection, PowerSchool export
 
+## Directory Structure
+
+```
+kora/
+├── apps/
+│   ├── web/                  # Student + Org portal (Next.js 14)
+│   └── admin/                # School admin console (Next.js 14)
+├── packages/
+│   ├── ui/                   # Shared component library
+│   ├── db/                   # Prisma schema + migrations
+│   └── config/               # Shared ESLint, TS, Tailwind configs
+├── services/
+│   └── matching-engine/      # AI matching microservice (Python/FastAPI)
+├── docs/
+│   ├── architecture.md
+│   └── api-spec.md
+├── .cursor/rules
+├── CLAUDE.md
+├── turbo.json
+└── package.json
+```
+
 ## Tech Stack
 | Layer | Tech |
 |---|---|
