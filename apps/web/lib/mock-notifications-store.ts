@@ -33,6 +33,8 @@ function saveNotifications(notifications: AppNotification[]): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(notifications));
 }
 
+const serverSnapshot = cloneSeedNotifications();
+
 let notifications = cloneSeedNotifications();
 const listeners = new Set<() => void>();
 let hydrated = false;
@@ -55,7 +57,7 @@ function getSnapshot(): AppNotification[] {
 }
 
 function getServerSnapshot(): AppNotification[] {
-  return cloneSeedNotifications();
+  return serverSnapshot;
 }
 
 function subscribe(listener: () => void): () => void {

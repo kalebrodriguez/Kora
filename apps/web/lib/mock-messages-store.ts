@@ -33,6 +33,8 @@ function saveThreads(threads: ConversationThread[]): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(threads));
 }
 
+const serverSnapshot = cloneSeedThreads();
+
 let threads = cloneSeedThreads();
 const listeners = new Set<() => void>();
 let hydrated = false;
@@ -55,7 +57,7 @@ function getSnapshot(): ConversationThread[] {
 }
 
 function getServerSnapshot(): ConversationThread[] {
-  return cloneSeedThreads();
+  return serverSnapshot;
 }
 
 function subscribe(listener: () => void): () => void {

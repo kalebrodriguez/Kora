@@ -56,6 +56,8 @@ function saveState(state: ProfileState): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
+const serverSnapshot = getInitialState();
+
 let state = getInitialState();
 const listeners = new Set<() => void>();
 let hydrated = false;
@@ -78,7 +80,7 @@ function getSnapshot(): ProfileState {
 }
 
 function getServerSnapshot(): ProfileState {
-  return getInitialState();
+  return serverSnapshot;
 }
 
 function subscribe(listener: () => void): () => void {
