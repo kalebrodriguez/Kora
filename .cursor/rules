@@ -1,0 +1,41 @@
+You are working on Kora — a B2B SaaS platform for high school community service tracking.
+
+## Stack
+- Next.js 14 App Router, TypeScript, Tailwind CSS, shadcn/ui
+- tRPC for API layer, Prisma ORM, PostgreSQL via Supabase
+- Clerk for auth (three roles: STUDENT, ORG_MODERATOR, SCHOOL_ADMIN)
+- Turborepo monorepo: apps/web, apps/admin, packages/db, packages/ui
+
+## Code Rules
+- Always use TypeScript. No `any` types ever.
+- Use tRPC procedures for all internal API calls. Never raw fetch to /api routes.
+- All DB access goes through `packages/db`. Never import Prisma directly in app code.
+- Tailwind only for styling. No inline styles. No CSS modules.
+- Server components by default. Add "use client" only when strictly necessary.
+- Use Zod for all input validation on tRPC procedures.
+- shadcn/ui for all UI primitives. Don't build from scratch what shadcn covers.
+
+## Naming Conventions
+- Components: PascalCase
+- Files: kebab-case
+- DB models: match Prisma schema exactly
+- tRPC routers: camelCase, grouped by domain (shift, user, org, school)
+
+## Security Rules
+- QR tokens are HMAC-signed with a server secret. Never expose raw IDs in QR codes.
+- Hours are never self-reported. Always require ORG_MODERATOR verification.
+- School admins can only query data scoped to their schoolId — enforce at query level.
+- Fraud flagging triggers when 3+ students log identical unverified hours within 10 minutes.
+
+## Model Selection
+Use extended thinking / reasoning mode for:
+- Designing the QR HMAC token scheme
+- Multi-tenant data isolation architecture
+- AI matching algorithm design
+- Any decision touching security, compliance, or FERPA
+
+Use fast mode for:
+- UI components and Tailwind styling
+- tRPC boilerplate
+- Prisma query writing
+- Config and setup tasks
