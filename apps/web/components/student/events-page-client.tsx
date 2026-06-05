@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { rankShiftsForStudent } from "@/lib/matching";
-import { student } from "@/lib/mock-data";
 import { useMockStore } from "@/lib/mock-store";
+import { useProfileStore } from "@/lib/mock-profile-store";
 import { ShiftCard } from "@/components/student/shift-card";
 import {
   ShiftFilters,
@@ -16,6 +16,7 @@ function countSkillOverlap(studentSkills: string[], shiftSkills: string[]) {
 
 export function EventsPageClient() {
   const store = useMockStore();
+  const { skills } = useProfileStore();
   const [category, setCategory] = useState<CategoryFilter>("all");
   const [skill, setSkill] = useState("");
   const [search, setSearch] = useState("");
@@ -28,7 +29,7 @@ export function EventsPageClient() {
   );
 
   const filteredShifts = useMemo(() => {
-    const ranked = rankShiftsForStudent(student.skills, allShifts);
+    const ranked = rankShiftsForStudent(skills, allShifts);
     const query = search.trim().toLowerCase();
 
     return ranked.filter((shift) => {
@@ -47,7 +48,7 @@ export function EventsPageClient() {
       }
       return true;
     });
-  }, [allShifts, category, skill, search]);
+  }, [allShifts, category, skill, search, skills]);
 
   return (
     <>
@@ -69,7 +70,7 @@ export function EventsPageClient() {
             isSaved={store.isSaved(shift.id)}
             isCommitted={store.isCommitted(shift.id)}
             matchScore={shift.matchScore}
-            skillOverlap={countSkillOverlap(student.skills, shift.skills)}
+            skillOverlap={countSkillOverlap(skills, shift.skills)}
             onSave={store.toggleSavedShift}
             onCommit={store.commitToShift}
           />

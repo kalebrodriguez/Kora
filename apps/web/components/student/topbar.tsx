@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Search, Mail, Bell } from "lucide-react";
 import { MessagesPopup } from "@/components/student/messages-popup";
 import { NotificationsPopup } from "@/components/student/notifications-popup";
+import { StudentAvatar } from "@/components/student/student-avatar";
 import { hasUnreadMessages } from "@/lib/messages";
 import { hasUnreadNotifications } from "@/lib/notifications";
 import { useMessagesStore } from "@/lib/mock-messages-store";
 import { useNotificationsStore } from "@/lib/mock-notifications-store";
+import { useStudentAvatar } from "@/lib/use-student-avatar";
 import { student } from "@/lib/mock-data";
 
 export function Topbar() {
@@ -15,6 +18,7 @@ export function Topbar() {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const { threads } = useMessagesStore();
   const { notifications } = useNotificationsStore();
+  const avatar = useStudentAvatar();
   const unreadMessages = hasUnreadMessages(threads);
   const unreadNotifications = hasUnreadNotifications(notifications);
 
@@ -35,7 +39,7 @@ export function Topbar() {
             setNotificationsOpen(false);
             setMessagesOpen((open) => !open);
           }}
-          className="relative grid h-12 w-12 place-items-center rounded-full bg-surface text-ink shadow-card transition hover:text-primary"
+          className="relative grid h-12 w-12 cursor-pointer place-items-center rounded-full bg-surface text-ink shadow-card transition hover:text-primary"
           aria-label={unreadMessages ? "Messages, unread" : "Messages"}
           aria-expanded={messagesOpen}
         >
@@ -57,7 +61,7 @@ export function Topbar() {
             setMessagesOpen(false);
             setNotificationsOpen((open) => !open);
           }}
-          className="relative grid h-12 w-12 place-items-center rounded-full bg-surface text-ink shadow-card transition hover:text-primary"
+          className="relative grid h-12 w-12 cursor-pointer place-items-center rounded-full bg-surface text-ink shadow-card transition hover:text-primary"
           aria-label={
             unreadNotifications ? "Notifications, unread" : "Notifications"
           }
@@ -76,18 +80,20 @@ export function Topbar() {
 
       <div className="mx-1 h-8 w-px bg-black/5" />
 
-      <div className="flex items-center gap-3">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={student.avatar}
-          alt=""
-          className="h-11 w-11 rounded-full bg-accent-lavender object-cover"
+      <Link
+        href="/profile"
+        className="flex cursor-pointer items-center gap-3 transition hover:opacity-80"
+      >
+        <StudentAvatar
+          config={avatar}
+          size={44}
+          className="rounded-full bg-accent-lavender"
         />
         <div className="hidden xl:block">
           <p className="text-[15px] font-bold leading-tight">{student.name}</p>
           <p className="text-[12px] text-muted">{student.grade}</p>
         </div>
-      </div>
+      </Link>
     </header>
   );
 }

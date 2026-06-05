@@ -2,6 +2,44 @@ export type CategoryKey = "community" | "environment" | "education";
 export type TintKey = "lavender" | "pink" | "sky";
 export type LogStatus = "verified" | "pending" | "flagged";
 
+export type AvatarHair =
+  | "short"
+  | "long"
+  | "curly"
+  | "ponytail"
+  | "buzz"
+  | "bangs"
+  | "braids"
+  | "spiky";
+export type AvatarHairColor = "black" | "brown" | "blonde" | "red" | "auburn";
+export type AvatarSkinTone = "light" | "medium" | "tan" | "brown" | "dark";
+export type AvatarExpression =
+  | "smile"
+  | "neutral"
+  | "excited"
+  | "wink"
+  | "laugh"
+  | "cool";
+export type AvatarBackground = "lavender" | "pink" | "sky" | "mint";
+export type AvatarAccessory = "none" | "glasses" | "sunglasses";
+export type AvatarHat =
+  | "none"
+  | "baseball-cap"
+  | "beanie"
+  | "graduation-cap"
+  | "party-hat"
+  | "crown";
+
+export interface AvatarConfig {
+  hair: AvatarHair;
+  hairColor: AvatarHairColor;
+  skinTone: AvatarSkinTone;
+  expression: AvatarExpression;
+  background: AvatarBackground;
+  accessory: AvatarAccessory;
+  hat: AvatarHat;
+}
+
 export interface StudentProfile {
   id: string;
   name: string;

@@ -18,6 +18,8 @@ import {
   student,
 } from "@/lib/mock-data";
 import { useMessagesStore } from "@/lib/mock-messages-store";
+import { useStudentAvatar } from "@/lib/use-student-avatar";
+import { StudentAvatar } from "@/components/student/student-avatar";
 import type {
   ConversationThread,
   Friend,
@@ -128,6 +130,7 @@ export function MessagesPageClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { threads, sendMessage, openThread, upsertThread } = useMessagesStore();
+  const avatar = useStudentAvatar();
   const [selectedThreadId, setSelectedThreadId] = useState(
     threads[0]?.id ?? "",
   );
@@ -377,11 +380,10 @@ export function MessagesPageClient() {
               ) : null}
 
               <div className="flex items-end gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={student.avatar}
-                  alt=""
-                  className="hidden h-9 w-9 shrink-0 rounded-full bg-accent-lavender object-cover sm:block"
+                <StudentAvatar
+                  config={avatar}
+                  size={36}
+                  className="hidden shrink-0 rounded-full bg-accent-lavender sm:block"
                 />
                 <textarea
                   value={draft}

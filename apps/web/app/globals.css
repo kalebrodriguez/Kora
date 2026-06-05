@@ -47,6 +47,7 @@ body {
   font-family: var(--font-sans);
 }
 
+
 /* Sidebar uses bg-surface class; Kora spec assigns it soft gray */
 aside.bg-surface {
   background-color: var(--color-sidebar);
@@ -73,4 +74,40 @@ aside.bg-surface {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Placed after Tailwind layers so preflight doesn't override */
+a[href],
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+label[for],
+summary {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+/* Let icon SVGs inherit the parent control's cursor */
+button svg,
+a svg,
+[role="button"] svg {
+  pointer-events: none;
+}
+
+@keyframes requirement-card-enter {
+  from {
+    opacity: 0.82;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.requirement-card-active {
+  animation: requirement-card-enter 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }

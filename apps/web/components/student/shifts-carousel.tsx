@@ -6,21 +6,23 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, Heart, MapPin, Users } from "lucide-react";
 import { ModeratorRow } from "@/components/student/moderator-row";
 import { rankShiftsForStudent } from "@/lib/matching";
-import { getModeratorById, shifts, student, tints } from "@/lib/mock-data";
+import { getModeratorById, shifts, tints } from "@/lib/mock-data";
+import { useProfileStore } from "@/lib/mock-profile-store";
 
 function countSkillOverlap(studentSkills: string[], shiftSkills: string[]) {
   return studentSkills.filter((s) => shiftSkills.includes(s)).length;
 }
 
 export function ShiftsCarousel() {
+  const { skills } = useProfileStore();
   const scroller = useRef<HTMLDivElement>(null);
   const [saved, setSaved] = useState(
     () => new Set(shifts.filter((e) => e.saved).map((e) => e.id)),
   );
 
   const rankedShifts = useMemo(
-    () => rankShiftsForStudent(student.skills, shifts).slice(0, 4),
-    [],
+    () => rankShiftsForStudent(skills, shifts).slice(0, 4),
+    [skills],
   );
 
   const toggle = (id: string) =>
@@ -71,7 +73,7 @@ export function ShiftsCarousel() {
       >
         {rankedShifts.map((e) => {
           const tint = tints[e.categoryTint];
-          const overlap = countSkillOverlap(student.skills, e.skills);
+          const overlap = countSkillOverlap(skills, e.skills);
           const moderator = getModeratorById(e.moderatorId);
           return (
             <article
