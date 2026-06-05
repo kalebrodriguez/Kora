@@ -1,0 +1,95 @@
+{
+  "tone": "neutral",
+  "pronoun": "third-person",
+  "headingStyle": "unknown",
+  "headingLengthClass": "tight",
+  "ctaVerbs": [
+    {
+      "value": "client",
+      "count": 2
+    },
+    {
+      "value": "get",
+      "count": 2
+    },
+    {
+      "value": "view",
+      "count": 2
+    },
+    {
+      "value": "shots",
+      "count": 1
+    },
+    {
+      "value": "available",
+      "count": 1
+    },
+    {
+      "value": "share",
+      "count": 1
+    },
+    {
+      "value": "detail",
+      "count": 1
+    },
+    {
+      "value": "previous",
+      "count": 1
+    },
+    {
+      "value": "next",
+      "count": 1
+    }
+  ],
+  "buttonPatterns": [
+    {
+      "value": "client@fireart.studio",
+      "count": 2
+    },
+    {
+      "value": "shots",
+      "count": 1
+    },
+    {
+      "value": "available for work",
+      "count": 1
+    },
+    {
+      "value": "get in touch",
+      "count": 1
+    },
+    {
+      "value": "view comments\n71\nshare actions\ndetail actions",
+      "count": 1
+    },
+    {
+      "value": "view comments\n71",
+      "count": 1
+    },
+    {
+      "value": "share actions",
+      "count": 1
+    },
+    {
+      "value": "detail actions",
+      "count": 1
+    },
+    {
+      "value": "previous",
+      "count": 1
+    },
+    {
+      "value": "next",
+      "count": 1
+    },
+    {
+      "value": "get started",
+      "count": 1
+    }
+  ],
+  "sampleHeadings": [],
+  "stats": {
+    "buttons": 12,
+    "headings": 0
+  }
+}

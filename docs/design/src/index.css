@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: #f5f6fb;
+  color: #1b1b2f;
+  font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+}
+
+/* slim, soft scrollbars to match the calm canvas */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e2e1f0;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cfc9f4;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

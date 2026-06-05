@@ -1,0 +1,113 @@
+{
+  "components": [
+    {
+      "cluster": "button--tertiary",
+      "variant": 0,
+      "path": "screenshots/button-tertiary-0.png",
+      "bounds": {
+        "w": 24,
+        "h": 24
+      },
+      "kind": "button",
+      "variantHint": "tertiary",
+      "sizeHint": "",
+      "retina": true
+    },
+    {
+      "cluster": "button--tertiary",
+      "variant": 1,
+      "path": "screenshots/button-tertiary-1.png",
+      "bounds": {
+        "w": 40,
+        "h": 40
+      },
+      "kind": "button",
+      "variantHint": "tertiary",
+      "sizeHint": "",
+      "retina": true
+    },
+    {
+      "cluster": "button--tertiary",
+      "variant": 2,
+      "path": "screenshots/button-tertiary-2.png",
+      "bounds": {
+        "w": 40,
+        "h": 40
+      },
+      "kind": "button",
+      "variantHint": "tertiary",
+      "sizeHint": "",
+      "retina": true
+    },
+    {
+      "cluster": "input--default",
+      "variant": 0,
+      "path": "screenshots/input-default-0.png",
+      "bounds": {
+        "w": 273,
+        "h": 54
+      },
+      "kind": "input",
+      "variantHint": "default",
+      "sizeHint": "",
+      "retina": true
+    },
+    {
+      "cluster": "button--default",
+      "variant": 0,
+      "path": "screenshots/button-default-0.png",
+      "bounds": {
+        "w": 57,
+        "h": 40
+      },
+      "kind": "button",
+      "variantHint": "default",
+      "sizeHint": "",
+      "retina": true
+    },
+    {
+      "cluster": "button--default",
+      "variant": 1,
+      "path": "screenshots/button-default-1.png",
+      "bounds": {
+        "w": 87,
+        "h": 12
+      },
+      "kind": "button",
+      "variantHint": "default",
+      "sizeHint": "",
+      "retina": true
+    },
+    {
+      "cluster": "button--default",
+      "variant": 2,
+      "path": "screenshots/button-default-2.png",
+      "bounds": {
+        "w": 111,
+        "h": 15
+      },
+      "kind": "button",
+      "variantHint": "default",
+      "sizeHint": "",
+      "retina": true
+    },
+    {
+      "cluster": "button--primary",
+      "variant": 0,
+      "path": "screenshots/button-primary-0.png",
+      "bounds": {
+        "w": 40,
+        "h": 40
+      },
+      "kind": "button",
+      "variantHint": "primary",
+      "sizeHint": "",
+      "retina": true
+    }
+  ],
+  "fullPage": {
+    "path": "screenshots/full-page.png",
+    "retina": true
+  },
+  "count": 8
+}

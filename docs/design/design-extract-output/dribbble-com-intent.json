@@ -1,0 +1,135 @@
+{
+  "pageIntent": {
+    "type": "blog-post",
+    "confidence": 0.6,
+    "path": "/shots/23027887-Coursue-Learning-Platform-Dashboard",
+    "title": "Coursue Learning Platform Dashboard by Fireart UI/UX for Fireart Studio on Dribbble",
+    "description": "Coursue Learning Platform Dashboard designed by Fireart UI/UX for Fireart Studio. Connect with them on Dribbble; the global community for designers and creative professionals.",
+    "signals": [
+      {
+        "kind": "meta",
+        "type": "blog-post",
+        "weight": 0.6,
+        "detail": "og:type=article"
+      }
+    ],
+    "alternates": [],
+    "needsSmart": false
+  },
+  "sectionRoles": {
+    "sections": [
+      {
+        "index": 0,
+        "tag": "nav",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.9,
+        "heading": null,
+        "bounds": {
+          "x": 613.484375,
+          "y": 31,
+          "w": 438.6875,
+          "h": 30
+        },
+        "buttonCount": 0,
+        "cardCount": 27,
+        "slots": {
+          "lede": "Explore\nHire Talent\nGet Hired\nCommunity"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 1,
+        "tag": "header",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.4,
+        "heading": null,
+        "bounds": {
+          "x": 120,
+          "y": 195,
+          "w": 1040,
+          "h": 108
+        },
+        "buttonCount": 4,
+        "cardCount": 1,
+        "slots": {
+          "ctaCount": 4,
+          "lede": "Fireart UI/UX for Fireart Studio\nAvailable for work\nFollow\nfireart.studio\nclient@fireart.studio\nGet in touch"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 2,
+        "tag": "section",
+        "role": "content",
+        "subrole": null,
+        "confidence": 0.3,
+        "heading": null,
+        "bounds": {
+          "x": 128,
+          "y": 211,
+          "w": 264.78125,
+          "h": 48
+        },
+        "buttonCount": 1,
+        "cardCount": 0,
+        "slots": {
+          "ctaCount": 1,
+          "lede": "Fireart UI/UX for Fireart Studio\nAvailable for work\nFollow"
+        },
+        "needsSmart": true
+      },
+      {
+        "index": 3,
+        "tag": "section",
+        "role": "content",
+        "subrole": null,
+        "confidence": 0.3,
+        "heading": null,
+        "bounds": {
+          "x": 640,
+          "y": 303,
+          "w": 0,
+          "h": 0
+        },
+        "buttonCount": 0,
+        "cardCount": 0,
+        "slots": {},
+        "needsSmart": true
+      },
+      {
+        "index": 4,
+        "tag": "div",
+        "role": "footer",
+        "subrole": null,
+        "confidence": 0.4,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 2750.5,
+          "w": 1280,
+          "h": 508
+        },
+        "buttonCount": 0,
+        "cardCount": 82,
+        "slots": {
+          "lede": "Print\nTypography\nIllustration\nProduct Design\nBranding\nAnimation\nMobile\nWeb Design\nPrint\nTypography\nIllustration\nProduct Design\nBranding\nAnimation\nMobile\nWeb Design\nBack to home page\nFor designers\nHire talent\nInspiration\nAdvertising\nBlog\nAbout\nCareers\nSupport\nX\nFacebook\nInstagram\nPinterest\n© 2026 Dribbble\nTerms\nPrivacy\nCookies\nJobs\nDesigners\nFreelancers\nTags\nPlaces\nResources"
+        },
+        "needsSmart": true
+      }
+    ],
+    "counts": {
+      "nav": 2,
+      "content": 2,
+      "footer": 1
+    },
+    "readingOrder": [
+      "nav",
+      "nav",
+      "content",
+      "content",
+      "footer"
+    ]
+  }
+}

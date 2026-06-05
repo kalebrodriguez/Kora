@@ -1,0 +1,24 @@
+{
+  "$schema": "https://designlang.app/schemas/gradients.json",
+  "source": "https://dribbble.com/shots/23027887-Coursue-Learning-Platform-Dashboard",
+  "generated": "2026-06-05T15:52:51.927Z",
+  "count": 1,
+  "gradients": [
+    {
+      "raw": "linear-gradient(172deg, rgb(74, 96, 113) 14.52%, rgb(0, 0, 0) 108.51%)",
+      "type": "linear",
+      "direction": "172deg",
+      "stops": [
+        {
+          "color": "rgb(74, 96, 113)",
+          "position": "14.52%"
+        },
+        {
+          "color": "rgb(0, 0, 0)",
+          "position": "108.51%"
+        }
+      ],
+      "classification": "brand"
+    }
+  ]
+}

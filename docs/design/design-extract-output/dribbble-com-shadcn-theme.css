@@ -1,0 +1,19 @@
+/* shadcn/ui Theme — extracted from https://dribbble.com/shots/23027887-Coursue-Learning-Platform-Dashboard */
+/* Paste into your globals.css */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --primary: 243 48% 9%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 337 79% 61%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 240 14% 96%;
+    --accent-foreground: 0 0% 0%;
+    --muted: 0 0% 50%;
+    --muted-foreground: 0 0% 0%;
+    --border: 258 14% 42%;
+    --radius: 6px;
+  }
+}

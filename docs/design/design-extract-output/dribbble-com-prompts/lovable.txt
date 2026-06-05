@@ -1,0 +1,8 @@
+Clone the design language of this blog-post page and build a fresh equivalent.
+Visual feel: flat. Tone: neutral · Headings: unknown · CTA verbs: [object Object], [object Object], [object Object], [object Object], [object Object], [object Object]
+Primary palette: #0d0c22, #000000, #060318, #ffffff, #6e6d7a.
+Typography: [object Object], [object Object], [object Object].
+Corner radius vocabulary: 3, 6, 10, 16, 50.
+Shadow vocabulary: rgba(0, 0, 0, 0.03) 0px 2px 6px 0px | rgba(0, 0, 0, 0.1) 0px 0px 10px 0px | rgba(0, 0, 0, 0.5) 0px 0px 10px 0px.
+Page structure:
+- footer

@@ -1,0 +1,79 @@
+{
+  "openGraph": {
+    "type": "article",
+    "title": "Coursue Learning Platform Dashboard",
+    "site_name": "Dribbble",
+    "url": "https://dribbble.com/shots/23027887-Coursue-Learning-Platform-Dashboard",
+    "image": "https://cdn.dribbble.com/uploads/68059/original/f95c1a744395b01385a3685ba20daac0.png?1770659618",
+    "image:secure_url": "https://cdn.dribbble.com/userupload/11325350/file/original-817e8d5833dcaa72626fd46e55c080e6.png?resize=1600x1200",
+    "image:alt": "Dribbble shot titled \"Coursue Learning Platform Dashboard\" by Fireart UI/UX",
+    "image:width": "3200",
+    "image:height": "2400"
+  },
+  "twitter": {
+    "title": "Coursue Learning Platform Dashboard",
+    "site": "@dribbble",
+    "domain": "dribbble.com",
+    "url": "https://dribbble.com/shots/23027887-Coursue-Learning-Platform-Dashboard",
+    "creator": "@fireart_studio",
+    "image": "https://cdn.dribbble.com/uploads/68059/original/f95c1a744395b01385a3685ba20daac0.png?1770659618",
+    "image:alt": "Dribbble shot titled \"Coursue Learning Platform Dashboard\" by Fireart UI/UX",
+    "card": "summary_large_image",
+    "label1": "Dribbbled by",
+    "data1": "@fireart-uiux",
+    "label2": "Team",
+    "data2": "@Fireart-d"
+  },
+  "description": "Coursue Learning Platform Dashboard designed by Fireart UI/UX for Fireart Studio. Connect with them on Dribbble; the global community for designers and creative professionals.",
+  "canonical": null,
+  "themeColor": "#FFFFFF",
+  "viewport": "width=device-width, initial-scale=1.0, minimum-scale=1.0, interactive-widget=resizes-content",
+  "favicons": [
+    {
+      "rel": "icon",
+      "href": "https://dribbble.com/images/favicon.ico",
+      "sizes": "",
+      "type": "image/x-icon"
+    },
+    {
+      "rel": "icon",
+      "href": "https://dribbble.com/images/favicon-64x64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "rel": "icon",
+      "href": "https://dribbble.com/images/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "rel": "apple-touch-icon",
+      "href": "https://dribbble.com/images/apple-touch-icon-precomposed.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }
+  ],
+  "manifest": null,
+  "structuredData": [
+    {
+      "type": "ImageObject",
+      "name": null,
+      "sample": "{\"@context\":\"https://schema.org/\",\"@type\":\"ImageObject\",\"contentUrl\":\"https://cdn.dribbble.com/userupload/11325352/file/original-e2870003446991717ec91a45410323db.png\",\"creator\":{\"@type\":\"Person\",\"name\":\"Fireart UI/UX\"}}"
+    },
+    {
+      "type": "ImageObject",
+      "name": null,
+      "sample": "{\"@context\":\"https://schema.org/\",\"@type\":\"ImageObject\",\"contentUrl\":\"https://cdn.dribbble.com/userupload/11325351/file/original-190871aa1387bd0aa32a56bedcc522da.png\",\"creator\":{\"@type\":\"Person\",\"name\":\"Fireart UI/UX\"}}"
+    }
+  ],
+  "score": {
+    "hasOg": true,
+    "hasTwitter": true,
+    "hasDescription": true,
+    "hasCanonical": false,
+    "hasStructuredData": true,
+    "hasFavicon": true,
+    "hasThemeColor": true
+  }
+}

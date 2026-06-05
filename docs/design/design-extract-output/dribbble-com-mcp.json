@@ -1,0 +1,882 @@
+{
+  "colors": {
+    "all": [
+      {
+        "hex": "#0d0c22",
+        "rgb": {
+          "r": 13,
+          "g": 12,
+          "b": 34,
+          "a": 1
+        },
+        "hsl": {
+          "h": 243,
+          "s": 48,
+          "l": 9
+        },
+        "count": 749,
+        "contexts": [
+          "text",
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0
+        },
+        "count": 432,
+        "contexts": [
+          "text",
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#060318",
+        "rgb": {
+          "r": 6,
+          "g": 3,
+          "b": 24,
+          "a": 1
+        },
+        "hsl": {
+          "h": 249,
+          "s": 78,
+          "l": 5
+        },
+        "count": 297,
+        "contexts": [
+          "text",
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#ffffff",
+        "rgb": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 100
+        },
+        "count": 91,
+        "contexts": [
+          "background",
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#6e6d7a",
+        "rgb": {
+          "r": 110,
+          "g": 109,
+          "b": 122,
+          "a": 1
+        },
+        "hsl": {
+          "h": 245,
+          "s": 6,
+          "l": 45
+        },
+        "count": 75,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#655c7a",
+        "rgb": {
+          "r": 101,
+          "g": 92,
+          "b": 122,
+          "a": 1
+        },
+        "hsl": {
+          "h": 258,
+          "s": 14,
+          "l": 42
+        },
+        "count": 38,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#3d3d4e",
+        "rgb": {
+          "r": 61,
+          "g": 61,
+          "b": 78,
+          "a": 1
+        },
+        "hsl": {
+          "h": 240,
+          "s": 12,
+          "l": 27
+        },
+        "count": 30,
+        "contexts": [
+          "background",
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#9e9ea7",
+        "rgb": {
+          "r": 158,
+          "g": 158,
+          "b": 167,
+          "a": 1
+        },
+        "hsl": {
+          "h": 240,
+          "s": 5,
+          "l": 64
+        },
+        "count": 21,
+        "contexts": [
+          "text",
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#e7e7e9",
+        "rgb": {
+          "r": 231,
+          "g": 231,
+          "b": 233,
+          "a": 0.5
+        },
+        "hsl": {
+          "h": 240,
+          "s": 4,
+          "l": 91
+        },
+        "count": 18,
+        "contexts": [
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#524b63",
+        "rgb": {
+          "r": 82,
+          "g": 75,
+          "b": 99,
+          "a": 1
+        },
+        "hsl": {
+          "h": 258,
+          "s": 14,
+          "l": 34
+        },
+        "count": 18,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#262627",
+        "rgb": {
+          "r": 38,
+          "g": 38,
+          "b": 39,
+          "a": 1
+        },
+        "hsl": {
+          "h": 240,
+          "s": 1,
+          "l": 15
+        },
+        "count": 14,
+        "contexts": [
+          "text",
+          "border",
+          "background"
+        ]
+      },
+      {
+        "hex": "#f3f3f6",
+        "rgb": {
+          "r": 243,
+          "g": 243,
+          "b": 246,
+          "a": 1
+        },
+        "hsl": {
+          "h": 240,
+          "s": 14,
+          "l": 96
+        },
+        "count": 11,
+        "contexts": [
+          "background",
+          "border"
+        ]
+      },
+      {
+        "hex": "#3e34d3",
+        "rgb": {
+          "r": 62,
+          "g": 52,
+          "b": 211,
+          "a": 1
+        },
+        "hsl": {
+          "h": 244,
+          "s": 64,
+          "l": 52
+        },
+        "count": 10,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#dbdbde",
+        "rgb": {
+          "r": 219,
+          "g": 219,
+          "b": 222,
+          "a": 1
+        },
+        "hsl": {
+          "h": 240,
+          "s": 4,
+          "l": 86
+        },
+        "count": 10,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#807ea3",
+        "rgb": {
+          "r": 128,
+          "g": 126,
+          "b": 163,
+          "a": 0.6
+        },
+        "hsl": {
+          "h": 243,
+          "s": 17,
+          "l": 57
+        },
+        "count": 6,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#ea4c89",
+        "rgb": {
+          "r": 234,
+          "g": 76,
+          "b": 137,
+          "a": 1
+        },
+        "hsl": {
+          "h": 337,
+          "s": 79,
+          "l": 61
+        },
+        "count": 6,
+        "contexts": [
+          "background",
+          "border",
+          "text"
+        ]
+      },
+      {
+        "hex": "#727ac0",
+        "rgb": {
+          "r": 114,
+          "g": 122,
+          "b": 192,
+          "a": 1
+        },
+        "hsl": {
+          "h": 234,
+          "s": 38,
+          "l": 60
+        },
+        "count": 4,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#9890ac",
+        "rgb": {
+          "r": 152,
+          "g": 144,
+          "b": 172,
+          "a": 1
+        },
+        "hsl": {
+          "h": 257,
+          "s": 14,
+          "l": 62
+        },
+        "count": 4,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#4daa57",
+        "rgb": {
+          "r": 77,
+          "g": 170,
+          "b": 87,
+          "a": 1
+        },
+        "hsl": {
+          "h": 126,
+          "s": 38,
+          "l": 48
+        },
+        "count": 2,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#808080",
+        "rgb": {
+          "r": 128,
+          "g": 128,
+          "b": 128,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 50
+        },
+        "count": 2,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      }
+    ]
+  },
+  "regions": [
+    {
+      "role": "nav",
+      "tag": "nav",
+      "bounds": {
+        "x": 613.484375,
+        "y": 31,
+        "w": 438.6875,
+        "h": 30
+      },
+      "heading": null,
+      "buttonCount": 0,
+      "cardCount": 27,
+      "className": "site-nav-main"
+    },
+    {
+      "role": "nav",
+      "tag": "header",
+      "bounds": {
+        "x": 120,
+        "y": 195,
+        "w": 1040,
+        "h": 108
+      },
+      "heading": null,
+      "buttonCount": 4,
+      "cardCount": 1,
+      "className": "user-sticky-header "
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 128,
+        "y": 211,
+        "w": 264.78125,
+        "h": 48
+      },
+      "heading": null,
+      "buttonCount": 1,
+      "cardCount": 0,
+      "className": "user-sticky-header__user-container"
+    },
+    {
+      "role": "content",
+      "tag": "section",
+      "bounds": {
+        "x": 640,
+        "y": 303,
+        "w": 0,
+        "h": 0
+      },
+      "heading": null,
+      "buttonCount": 0,
+      "cardCount": 0,
+      "className": " case-study-shot-media"
+    },
+    {
+      "role": "footer",
+      "tag": "div",
+      "bounds": {
+        "x": 0,
+        "y": 2750.5,
+        "w": 1280,
+        "h": 508
+      },
+      "heading": null,
+      "buttonCount": 0,
+      "cardCount": 82,
+      "className": "site-footer js-site-footer"
+    }
+  ],
+  "componentClusters": [
+    {
+      "kind": "button",
+      "structuralHash": "button>svg",
+      "instanceCount": 4,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(61, 61, 78)",
+            "color": "rgb(158, 158, 167)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "50%",
+            "border": "1px solid rgba(0, 0, 0, 0)",
+            "fontSize": "13px",
+            "fontWeight": "600"
+          },
+          "instanceCount": 2
+        },
+        {
+          "css": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(13, 12, 34)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "50%",
+            "border": "1px solid rgb(231, 231, 233)",
+            "fontSize": "13px",
+            "fontWeight": "600"
+          },
+          "instanceCount": 1
+        },
+        {
+          "css": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(58, 53, 70)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "4px",
+            "border": "0px none rgb(58, 53, 70)",
+            "fontSize": "12px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 1
+        }
+      ]
+    },
+    {
+      "kind": "input",
+      "structuralHash": "input",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(6, 3, 24)",
+            "padding": "0px 0px 0px 24px",
+            "borderRadius": "12px",
+            "border": "0px none rgb(6, 3, 24)",
+            "fontSize": "14px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 1
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "button>span",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(58, 53, 70)",
+            "padding": "0px 18.5px 0px 0px",
+            "borderRadius": "8px",
+            "border": "0px none rgb(58, 53, 70)",
+            "fontSize": "14px",
+            "fontWeight": "600"
+          },
+          "instanceCount": 1
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "button",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(77, 170, 87)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "0px",
+            "border": "0px none rgb(77, 170, 87)",
+            "fontSize": "11px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 1
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "button>span>span",
+      "instanceCount": 2,
+      "variants": [
+        {
+          "css": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(13, 12, 34)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "0px",
+            "border": "0px none rgb(13, 12, 34)",
+            "fontSize": "12px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 2
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "a>span",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(13, 12, 34)",
+            "color": "rgb(255, 255, 255)",
+            "padding": "0px 20px 0px 20px",
+            "borderRadius": "1e+07px",
+            "border": "1px solid rgb(13, 12, 34)",
+            "fontSize": "13px",
+            "fontWeight": "600"
+          },
+          "instanceCount": 1
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "div>button>button>button",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(13, 12, 34)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "0px",
+            "border": "0px none rgb(13, 12, 34)",
+            "fontSize": "14px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 1
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "button>svg>span>span",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(13, 12, 34)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "50%",
+            "border": "1px solid rgb(231, 231, 233)",
+            "fontSize": "13px",
+            "fontWeight": "600"
+          },
+          "instanceCount": 1
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "button>svg>span",
+      "instanceCount": 2,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(13, 12, 34)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "50%",
+            "border": "1px solid rgb(231, 231, 233)",
+            "fontSize": "13px",
+            "fontWeight": "600"
+          },
+          "instanceCount": 2
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "div>a>span",
+      "instanceCount": 2,
+      "variants": [
+        {
+          "css": {
+            "background": "rgba(0, 0, 0, 0)",
+            "color": "rgb(110, 109, 122)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "0px",
+            "border": "0px none rgb(110, 109, 122)",
+            "fontSize": "12px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 2
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "div>svg",
+      "instanceCount": 2,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(243, 243, 244)",
+            "color": "rgb(110, 109, 122)",
+            "padding": "0px 0px 0px 0px",
+            "borderRadius": "50%",
+            "border": "0px none rgb(110, 109, 122)",
+            "fontSize": "12px",
+            "fontWeight": "400"
+          },
+          "instanceCount": 2
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "structuralHash": "a",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(255, 255, 255)",
+            "color": "rgb(13, 12, 34)",
+            "padding": "0px 24px 0px 24px",
+            "borderRadius": "1e+07px",
+            "border": "1px solid rgb(231, 231, 233)",
+            "fontSize": "10px",
+            "fontWeight": "600"
+          },
+          "instanceCount": 1
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "remediation": [
+      {
+        "fg": "#ffffff",
+        "bg": "#ea4c89",
+        "ratio": 3.56,
+        "rule": "AA-normal",
+        "suggestion": {
+          "replace": "fg",
+          "color": "#000000",
+          "newRatio": 5.89
+        }
+      }
+    ]
+  },
+  "cssHealth": {
+    "sheets": [
+      {
+        "url": "https://cdn.dribbble.com/assets/vite/assets/flickity-ba87a55c.css",
+        "totalBytes": 1739,
+        "usedBytes": 0,
+        "unusedBytes": 1739,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://cdn.dribbble.com/assets/vite/assets/shoelace-overrides-a3aff624.css",
+        "totalBytes": 18656,
+        "usedBytes": 18085,
+        "unusedBytes": 571,
+        "unusedPercent": 3
+      },
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap",
+        "totalBytes": 14217,
+        "usedBytes": 0,
+        "unusedBytes": 14217,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://cdn.dribbble.com/assets/vite/assets/site-nav-autocomplete-14ad979f.css",
+        "totalBytes": 23133,
+        "usedBytes": 3846,
+        "unusedBytes": 19287,
+        "unusedPercent": 83
+      },
+      {
+        "url": "https://cdn.dribbble.com/assets/shot/shot-page-802fc25a6b74f8745ff49f2b7d28c92e7f496bbaf28a62feb9f4419db548008d.css",
+        "totalBytes": 591800,
+        "usedBytes": 48252,
+        "unusedBytes": 543548,
+        "unusedPercent": 92
+      },
+      {
+        "url": "https://dribbble.com/shots/23027887-Coursue-Learning-Platform-Dashboard",
+        "totalBytes": 15238,
+        "usedBytes": 2694,
+        "unusedBytes": 12544,
+        "unusedPercent": 82
+      },
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap",
+        "totalBytes": 6792,
+        "usedBytes": 0,
+        "unusedBytes": 6792,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://cdn.dribbble.com/assets/mini-master-async-0ef7abe3c068a874677efa31e0dcf0be5025e749b57071aa3cea71d46182daa0.css",
+        "totalBytes": 166596,
+        "usedBytes": 4634,
+        "unusedBytes": 161962,
+        "unusedPercent": 97
+      },
+      {
+        "url": "https://dribbble.com/assets/vite/assets/vButton-f6b62ba4.css",
+        "totalBytes": 212,
+        "usedBytes": 0,
+        "unusedBytes": 212,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://dribbble.com/assets/vite/assets/shot-page-5ad3bf97.css",
+        "totalBytes": 10874,
+        "usedBytes": 1567,
+        "unusedBytes": 9307,
+        "unusedPercent": 86
+      },
+      {
+        "url": "https://dribbble.com/assets/vite/assets/flickity-ba87a55c.css",
+        "totalBytes": 1739,
+        "usedBytes": 0,
+        "unusedBytes": 1739,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://dribbble.com/assets/vite/assets/progressOverlay-d29c19d4.css",
+        "totalBytes": 461,
+        "usedBytes": 0,
+        "unusedBytes": 461,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://dribbble.com/assets/vite/assets/client-entry-676621dd.css",
+        "totalBytes": 38,
+        "usedBytes": 0,
+        "unusedBytes": 38,
+        "unusedPercent": 100
+      },
+      {
+        "url": "https://dribbble.com/assets/vite/assets/linkBlockBase-4f18682f.css",
+        "totalBytes": 9526,
+        "usedBytes": 1604,
+        "unusedBytes": 7922,
+        "unusedPercent": 83
+      },
+      {
+        "url": "https://dribbble.com/assets/vite/assets/main-aa29adc2.css",
+        "totalBytes": 3577,
+        "usedBytes": 151,
+        "unusedBytes": 3426,
+        "unusedPercent": 96
+      },
+      {
+        "url": "https://accounts.google.com/gsi/style",
+        "totalBytes": 696,
+        "usedBytes": 0,
+        "unusedBytes": 696,
+        "unusedPercent": 100
+      }
+    ],
+    "totalBytes": 865294,
+    "usedBytes": 80833,
+    "unusedBytes": 784461,
+    "unusedPercent": 91,
+    "importantCount": 187,
+    "duplicates": 15022,
+    "vendorPrefixes": {
+      "webkit": 1900,
+      "moz": 240,
+      "ms": 1867,
+      "o": 26
+    },
+    "keyframes": [],
+    "specificity": {
+      "max": [
+        2,
+        10,
+        8
+      ],
+      "average": [
+        0.03,
+        2.24,
+        0.55
+      ],
+      "count": 7740
+    },
+    "issues": [
+      "187 !important rules",
+      "15022 duplicate declarations",
+      "91% unused CSS"
+    ]
+  }
+}
