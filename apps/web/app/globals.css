@@ -1,50 +1,76 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+@theme {
+  /* Kora brand palette */
+  --color-primary: #00c4cc;
+  --color-primary-deep: #00a8b0;
+  --color-banner-from: #00c4cc;
+  --color-banner-to: #00a8b0;
+  --color-ink: #2d2d2d;
+  --color-ink-button: #2d2d2d;
+  --color-muted: #757575;
+  --color-canvas: #faf9f6;
+  --color-sidebar: #f3f2ee;
+  --color-surface: #ffffff;
+  --color-accent-lavender: #efeeea;
+  --color-accent-pink: #fbe4f1;
+  --color-accent-sky: #ddf0fb;
+  --color-icon-pink: #ec68a6;
+  --color-icon-sky: #4db7e8;
+  --color-chart-track: #e8e6e0;
+  --color-danger: #f4663f;
+  --color-success: #4caf50;
+  --color-pending: #ffb300;
+  --color-flagged: #f4663f;
+
+  --font-sans: var(--font-inter), "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --radius-chip: 12px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  --max-width-shell: 1440px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Sidebar uses bg-surface class; Kora spec assigns it soft gray */
+aside.bg-surface {
+  background-color: var(--color-sidebar);
 }
 
-.imgDark {
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e0ded8;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4d2cc;
+}
+
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-
-  .imgLight {
-    display: none;
-  }
-  .imgDark {
-    display: unset;
-  }
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
