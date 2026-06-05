@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  LayoutDashboard,
+  CircleGauge,
   CalendarSearch,
   Clock,
   Target,
@@ -11,14 +11,23 @@ import {
 } from "lucide-react";
 
 const nav = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "/" },
+  { icon: CircleGauge, label: "Dashboard", href: "/" },
   { icon: CalendarSearch, label: "Events", href: "/events" },
   { icon: Clock, label: "My Hours", href: "/hours" },
   { icon: Target, label: "Goals", href: "/goals" },
   { icon: Building2, label: "Organizations", href: "/organizations" },
 ];
 
-export function SidebarNav() {
+const SIDEBAR_EASE =
+  "duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]";
+
+function sidebarFade(collapsed: boolean) {
+  return collapsed
+    ? "max-w-0 opacity-0 delay-0 duration-300 ease-in"
+    : "max-w-[200px] opacity-100 delay-100 duration-500 ease-out";
+}
+
+export function SidebarNav({ collapsed = false }: { collapsed?: boolean }) {
   const pathname = usePathname();
 
   return (
@@ -31,7 +40,10 @@ export function SidebarNav() {
           <Link
             key={label}
             href={href}
-            className={`group flex items-center gap-3 rounded-chip px-3 py-2.5 text-[15px] font-medium transition ${
+            title={collapsed ? label : undefined}
+            className={`group flex items-center rounded-chip py-2.5 text-[15px] font-medium transition-all ${SIDEBAR_EASE} ${
+              collapsed ? "justify-center px-2.5" : "gap-3 px-3"
+            } ${
               active
                 ? "bg-accent-lavender text-ink"
                 : "text-muted hover:bg-accent-lavender/50 hover:text-ink"
@@ -40,11 +52,15 @@ export function SidebarNav() {
             <Icon
               size={20}
               strokeWidth={2.2}
-              className={
+              className={`shrink-0 ${
                 active ? "text-primary" : "text-muted group-hover:text-primary"
-              }
+              }`}
             />
-            {label}
+            <span
+              className={`inline-block overflow-hidden whitespace-nowrap transition-[max-width,opacity] ${sidebarFade(collapsed)}`}
+            >
+              {label}
+            </span>
           </Link>
         );
       })}
