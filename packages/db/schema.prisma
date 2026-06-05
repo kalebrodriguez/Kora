@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String     @id @default(cuid())
+  clerkId   String     @unique
+  role      Role
+  email     String     @unique
+  firstName String?
+  lastName  String?
+  schoolId  String?
+  school    School?    @relation(fields: [schoolId], references: [id])
+  shiftLogs ShiftLog[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Shift {
+  id          String       @id @default(cuid())
+  title       String
+  description String
+  orgId       String
+  org         Organization @relation(fields: [orgId], references: [id])
+  slots       Int
+  scheduledAt DateTime
+  durationHrs Float
+  skills      String[]
+  waiverText  String?
+  logs        ShiftLog[]
+  createdAt   DateTime     @default(now())
+}
+
+model ShiftLog {
+  id         String    @id @default(cuid())
+  userId     String
+  shiftId    String
+  user       User      @relation(fields: [userId], references: [id])
+  shift      Shift     @relation(fields: [shiftId], references: [id])
+  hours      Float
+  qrToken    String?   @unique
+  verifiedAt DateTime?
+  verifiedBy String?
+  createdAt  DateTime  @default(now())
+
+  @@unique([userId, shiftId])
+}
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  website   String?
+  schoolId  String?
+  shifts    Shift[]
+  createdAt DateTime @default(now())
+}
+
+model School {
+  id        String   @id @default(cuid())
+  name      String
+  state     String
+  district  String?
+  users     User[]
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  STUDENT
+  ORG_MODERATOR
+  SCHOOL_ADMIN
+}
