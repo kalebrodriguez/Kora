@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CalendarDays, QrCode, Users } from "lucide-react";
+import { ArrowRight, CalendarDays, Plus, QrCode, Users } from "lucide-react";
 import {
   getModeratorContext,
   getOrgShifts,
@@ -40,10 +40,19 @@ export default async function OrgDashboardPage() {
       </div>
 
       <section className="mb-10">
-        <h2 className="mb-4 flex items-center gap-2 text-[20px] font-bold">
-          <CalendarDays size={20} className="text-primary" />
-          Your shifts
-        </h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="flex items-center gap-2 text-[20px] font-bold">
+            <CalendarDays size={20} className="text-primary" />
+            Your shifts
+          </h2>
+          <Link
+            href="/org/shifts/new"
+            className="inline-flex items-center gap-2 rounded-pill bg-primary px-5 py-2.5 text-[14px] font-semibold text-white transition hover:bg-primary-deep"
+          >
+            <Plus size={16} strokeWidth={2.4} />
+            New shift
+          </Link>
+        </div>
         {upcoming.length === 0 ? (
           <p className="rounded-card bg-surface px-6 py-10 text-center text-[14px] text-muted shadow-card">
             No upcoming shifts.

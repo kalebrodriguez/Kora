@@ -7,3 +7,4 @@ export * from "./queries/auth";
 export * from "./queries/student";
 export * from "./queries/org";
 export * from "./queries/admin";
+export * from "./queries/manage";

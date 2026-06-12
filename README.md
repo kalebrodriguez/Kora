@@ -7,8 +7,8 @@ AI-matched platform for student community service hours.
 
 **Three portals. One source of truth.**
 - **Student Dashboard** — matched shifts, QR-verified check-in, hours ledger ✅ live
-- **Organization Portal** — live QR check-in codes, roster, hours verification queue ✅ live
-- **Admin Console** — compliance master-list, flagged-hours review, CSV export ✅ live
+- **Organization Portal** — shift builder, live QR check-in codes, roster, verification queue ✅ live
+- **Admin Console** — compliance master-list, flagged-hours review, CSV export, org onboarding ✅ live
 
 ## Getting Started
 
@@ -75,8 +75,8 @@ npm run db:studio  # Prisma Studio
 
 ## Roadmap
 - [x] MVP: Student dashboard + QR check-in (real DB + auth)
-- [x] Organization portal: QR display + verification queue
-- [x] Admin console: compliance master-list + CSV export
+- [x] Organization portal: QR display + verification queue + shift builder
+- [x] Admin console: compliance master-list + CSV export + org onboarding
 - [ ] AI matching engine (FastAPI + embeddings)
 - [ ] Multi-state compliance rules (WA graduation, more FL tiers)
 - [ ] Production deploy: Postgres + managed auth

@@ -9,7 +9,9 @@ Built by a high school founder with extreme founder-market fit.
 **The MVP loop is fully functional on a real local stack** — no mock data:
 student commits to shift → moderator displays HMAC-signed QR code →
 student checks in → verified hours flow to ledger/goals/notifications.
-Moderators can also manually verify/flag pending hours.
+Moderators can also manually verify/flag pending hours, and publish new
+shifts (/org/shifts/new). Admins onboard partner orgs + moderator logins
+(/admin/organizations/new).
 
 Demo accounts (password `demo1234`): `student@demo.kora`, `org@demo.kora`, `admin@demo.kora`.
 `npm run setup && npm run dev` — zero env vars needed.

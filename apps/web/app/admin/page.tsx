@@ -1,8 +1,10 @@
+import Link from "next/link";
 import {
   AlertTriangle,
   BadgeCheck,
   Building2,
   Clock,
+  Plus,
   Users,
 } from "lucide-react";
 import {
@@ -41,12 +43,21 @@ export default async function AdminDashboardPage() {
 
   return (
     <>
-      <div className="mb-8">
-        <h1 className="text-[28px] font-extrabold">Compliance overview</h1>
-        <p className="mt-1 text-[14px] text-muted">
-          Verified service hours across {context.school.name}. Graduation
-          requirement: {hoursRequired} hours.
-        </p>
+      <div className="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <h1 className="text-[28px] font-extrabold">Compliance overview</h1>
+          <p className="mt-1 text-[14px] text-muted">
+            Verified service hours across {context.school.name}. Graduation
+            requirement: {hoursRequired} hours.
+          </p>
+        </div>
+        <Link
+          href="/admin/organizations/new"
+          className="inline-flex shrink-0 items-center gap-2 rounded-pill bg-primary px-5 py-2.5 text-[14px] font-semibold text-white transition hover:bg-primary-deep"
+        >
+          <Plus size={16} strokeWidth={2.4} />
+          Onboard organization
+        </Link>
       </div>
 
       <section className="mb-10 grid grid-cols-2 gap-4 md:grid-cols-5">
