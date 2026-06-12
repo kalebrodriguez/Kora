@@ -30,3 +30,6 @@ venv/
 .turbo/
 .vercel
 .swc/
+
+# Keep the local-dev DATABASE_URL (not a secret) so fresh clones work
+!packages/db/.env
