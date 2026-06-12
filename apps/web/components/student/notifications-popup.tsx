@@ -7,7 +7,7 @@ import {
   formatNotificationTime,
   sortNotifications,
 } from "@/lib/notifications";
-import { useNotificationsStore } from "@/lib/mock-notifications-store";
+import { useNotificationsStore } from "@/lib/student-data";
 import type { AppNotification, NotificationKind } from "@/lib/types/student";
 
 interface NotificationsPopupProps {

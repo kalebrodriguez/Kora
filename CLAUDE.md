@@ -1,73 +1,63 @@
 # Kora — Claude Context
 
 ## What This Is
-Kora is an API-first, AI-routed SaaS platform for high school community service compliance.
+Kora is an API-first SaaS platform for high school community service compliance.
 B2B revenue model: $5K–$10K annual licenses to school districts.
 Built by a high school founder with extreme founder-market fit.
 
+## Current State (2026-06-12)
+**The MVP loop is fully functional on a real local stack** — no mock data:
+student commits to shift → moderator displays HMAC-signed QR code →
+student checks in → verified hours flow to ledger/goals/notifications.
+Moderators can also manually verify/flag pending hours.
+
+Demo accounts (password `demo1234`): `student@demo.kora`, `org@demo.kora`, `admin@demo.kora`.
+`npm run setup && npm run dev` — zero env vars needed.
+
 ## Monorepo Layout
-- `apps/web` — Student + Org portal (Next.js 14 App Router)
-- `apps/admin` — School admin console (Next.js 14 App Router)
-- `packages/db` — Prisma schema, client, all DB queries (single source of truth)
-- `packages/ui` — Shared shadcn/ui components
-- `packages/config` — Shared ESLint, TypeScript, Tailwind configs
-- `services/matching-engine` — Python FastAPI AI matching microservice
+- `apps/web` — Student portal (`app/(student)`) + Org portal (`app/org`) + Admin console (`app/admin`) + `/login`
+- `apps/admin` — unused boilerplate (admin console lives in apps/web/app/admin)
+- `packages/db` — Prisma schema (SQLite), client, **all DB queries**, seed
+- `services/matching-engine` — Python FastAPI AI matching (Phase 3 — empty)
 
 ## Stack
-- Next.js 14 App Router + TypeScript
-- tRPC for all internal API calls
-- Prisma ORM + PostgreSQL via Supabase
-- Clerk for auth (roles: STUDENT, ORG_MODERATOR, SCHOOL_ADMIN)
-- Tailwind CSS + shadcn/ui
-- Turborepo monorepo
+- Next.js 16 App Router + TypeScript, Tailwind v4 (design tokens in `app/globals.css`)
+- React Server Components fetch data; mutations are Server Actions
+- Prisma + SQLite (`packages/db/dev.db`; path defaulted in `next.config.js`)
+- Auth: HMAC-signed session cookie (`apps/web/lib/auth/session.ts`),
+  roles STUDENT / ORG_MODERATOR / SCHOOL_ADMIN, guards via `requireRole()` in layouts
+- Client data layer: `apps/web/lib/student-data.tsx` — server-seeded React context
+  exposing `useStore()` / `useStudentData()` / `useNotificationsStore()`
 
 ## Key Constraints
-1. FERPA compliance — student data is always scoped to schoolId, never cross-school
-2. QR verification uses HMAC-signed tokens — never expose raw shift/user IDs
-3. Hours require ORG_MODERATOR verification before they count toward any requirement
-4. Multi-state compliance rules (FL Bright Futures vs WA graduation standards) live in
-   a rules engine, never hardcoded inline
-5. Fraud detection triggers when 3+ students log identical unverified hours within 10 min
+1. FERPA — student data is always scoped, never cross-school
+2. QR verification uses HMAC-signed tokens (`lib/qr-token.ts`) — never expose raw
+   shift/user IDs in codes; sessions expire in 15 min, one redemption per student
+3. Hours require ORG_MODERATOR verification (QR scan or manual queue) before
+   they count toward any requirement — only `status === "verified"` counts
+4. Compliance rules live in `apps/web/lib/compliance/rules.json` — never hardcode
+   state logic or hour thresholds inline
+5. Fraud rule: 3+ students logging identical unverified hours within 10 min are
+   flagged (`createPendingLog` in packages/db)
 
-## Data Model (core)
-- User (role, schoolId, clerkId)
-- Shift (orgId, slots, scheduledAt, skills[])
-- ShiftLog (userId, shiftId, hours, verifiedAt, qrToken)
-- Organization (name)
-- School (name, state)
+## Data Model (packages/db/schema.prisma)
+SQLite: no enums (validated strings), no scalar lists (JSON-encoded strings).
+User, School, Organization (1:1 moderator User), Shift, Commitment, SavedShift,
+OrgFollow, ShiftLog (status verified|pending|flagged), QrSession, Notification.
 
 ## Commands
-- `npm run dev` — start all apps
-- `npm run db:push` — push Prisma schema
+- `npm run dev` — all apps (web on :3000)
+- `npm run setup` — db:push + db:seed (resets demo data)
+- `npm run build` / `npm run lint` — must stay green
 - `npm run db:studio` — Prisma Studio
-- `npm run build` — full monorepo build
-- `cd services/matching-engine && uvicorn main:app --reload` — start matching engine
 
-## Current Phase
-MVP — Student dashboard + QR sign-off flow + Org verification portal.
-Admin console is Phase 2. AI matching engine is Phase 3.
-
-**Student portal mock MVP is built** (2026-06-05). Resume in a new chat via
-[`docs/superpowers/checkpoints/CONTINUE.md`](docs/superpowers/checkpoints/CONTINUE.md).
-Full session log: [`docs/superpowers/checkpoints/2026-06-05-student-portal.md`](docs/superpowers/checkpoints/2026-06-05-student-portal.md).
-
-## Model Usage
-Use extended thinking for:
-- System architecture decisions
-- QR HMAC token scheme design
-- FERPA multi-tenant data isolation
-- Matching algorithm architecture
-- Anything touching auth, security, or compliance
-
-Use standard mode for:
-- UI components and Tailwind styling
-- tRPC boilerplate and CRUD procedures
-- Prisma query writing
-- Config, setup, and docs
+## Still Client-Side Only (intentional, post-MVP)
+- Messages threads + friends rail (`lib/messages-store.ts`, seeded from `lib/ui-data.ts`)
+- Avatar builder config (`lib/profile-store.ts`; skills DO persist to DB)
 
 ## Do Not
 - Do not write raw SQL — use Prisma
-- Do not add Next.js API routes that bypass tRPC
+- Do not import `@prisma/client` in app code — always go through `@kora/db` queries
 - Do not hardcode school IDs, state logic, or hour thresholds inline
 - Do not use `any` TypeScript types
-- Do not import Prisma client directly in app code — always go through packages/db
+- Do not bypass `requireRole()` on new routes

@@ -10,14 +10,9 @@ import {
   getThreadPreviewLabel,
   sortThreadsForInbox,
 } from "@/lib/messages";
-import {
-  friends,
-  getModeratorById,
-  messageTemplates,
-  shifts,
-  student,
-} from "@/lib/mock-data";
-import { useMessagesStore } from "@/lib/mock-messages-store";
+import { friends, messageTemplates } from "@/lib/ui-data";
+import { useModeratorLookup, useStore } from "@/lib/student-data";
+import { useMessagesStore } from "@/lib/messages-store";
 import { useStudentAvatar } from "@/lib/use-student-avatar";
 import { StudentAvatar } from "@/components/student/student-avatar";
 import type {
@@ -98,9 +93,15 @@ function createFriendThread(friend: Friend): ConversationThread {
   };
 }
 
-function createModeratorThread(shift: Shift): ConversationThread {
-  const moderator = getModeratorById(shift.moderatorId)!;
-
+function createModeratorThread(
+  shift: Shift,
+  moderator: {
+    id: string;
+    name: string;
+    avatar: string;
+    roleTitle: string;
+  },
+): ConversationThread {
   return {
     id: `thread_${shift.id.replace("shift_", "")}`,
     kind: "moderator",
@@ -127,6 +128,8 @@ function getThreadIdForShift(shift: Shift): string {
 }
 
 export function MessagesPageClient() {
+  const { getModeratorById } = useModeratorLookup();
+  const shifts = useStore().getShifts();
   const router = useRouter();
   const searchParams = useSearchParams();
   const { threads, sendMessage, openThread, upsertThread } = useMessagesStore();
@@ -209,7 +212,7 @@ export function MessagesPageClient() {
         shift.org.toLowerCase().includes(query)
       );
     });
-  }, [recipientSearch]);
+  }, [recipientSearch, getModeratorById, shifts]);
 
   const startFriendChat = (friend: Friend) => {
     const threadId = getThreadIdForFriend(friend);
@@ -224,9 +227,13 @@ export function MessagesPageClient() {
   };
 
   const startModeratorChat = (shift: Shift) => {
+    const moderator = getModeratorById(shift.moderatorId);
+    if (!moderator) {
+      return;
+    }
     const threadId = getThreadIdForShift(shift);
     const existing = threads.find((thread) => thread.id === threadId);
-    const thread = existing ?? createModeratorThread(shift);
+    const thread = existing ?? createModeratorThread(shift, moderator);
     if (!existing) {
       upsertThread(thread);
     }

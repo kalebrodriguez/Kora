@@ -1,13 +1,14 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Heart, MapPin, Users } from "lucide-react";
 import { ModeratorRow } from "@/components/student/moderator-row";
 import { rankShiftsForStudent } from "@/lib/matching";
-import { getModeratorById, shifts, tints } from "@/lib/mock-data";
-import { useProfileStore } from "@/lib/mock-profile-store";
+import { tints } from "@/lib/ui-data";
+import { useModeratorLookup, useStore } from "@/lib/student-data";
+import { useProfileStore } from "@/lib/profile-store";
 
 function countSkillOverlap(studentSkills: string[], shiftSkills: string[]) {
   return studentSkills.filter((s) => shiftSkills.includes(s)).length;
@@ -15,26 +16,17 @@ function countSkillOverlap(studentSkills: string[], shiftSkills: string[]) {
 
 export function ShiftsCarousel() {
   const { skills } = useProfileStore();
+  const store = useStore();
+  const { getModeratorById } = useModeratorLookup();
+  const shifts = store.getShifts();
   const scroller = useRef<HTMLDivElement>(null);
-  const [saved, setSaved] = useState(
-    () => new Set(shifts.filter((e) => e.saved).map((e) => e.id)),
-  );
 
   const rankedShifts = useMemo(
     () => rankShiftsForStudent(skills, shifts).slice(0, 4),
-    [skills],
+    [skills, shifts],
   );
 
-  const toggle = (id: string) =>
-    setSaved((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
+  const toggle = (id: string) => store.toggleSavedShift(id);
 
   const scroll = (dir: number) =>
     scroller.current?.scrollBy({ left: dir * 360, behavior: "smooth" });
@@ -97,7 +89,7 @@ export function ShiftsCarousel() {
                   <Heart
                     size={17}
                     className={
-                      saved.has(e.id) ? "fill-danger text-danger" : "text-ink"
+                      e.saved ? "fill-danger text-danger" : "text-ink"
                     }
                     strokeWidth={2.2}
                   />

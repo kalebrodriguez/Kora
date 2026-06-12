@@ -1,7 +1,7 @@
 "use client";
 
 import { getGraduationRequirement } from "@/lib/compliance";
-import { student } from "@/lib/mock-data";
+import { useStudentData } from "@/lib/student-data";
 import { useStudentAvatar } from "@/lib/use-student-avatar";
 import { StudentAvatar } from "@/components/student/student-avatar";
 
@@ -12,10 +12,14 @@ interface ProgressRingProps {
 }
 
 export function ProgressRing({
-  hoursLogged = student.hoursLogged,
-  hoursRequired = getGraduationRequirement(student.schoolState),
+  hoursLogged: hoursLoggedProp,
+  hoursRequired: hoursRequiredProp,
   size = "default",
 }: ProgressRingProps) {
+  const { student } = useStudentData();
+  const hoursLogged = hoursLoggedProp ?? student.hoursLogged;
+  const hoursRequired =
+    hoursRequiredProp ?? getGraduationRequirement(student.schoolState);
   const avatar = useStudentAvatar();
   const pct = Math.round((hoursLogged / hoursRequired) * 100);
   const ringSize = size === "compact" ? 108 : 150;

@@ -1,31 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { MoreVertical, Plus, UserPlus, Check } from "lucide-react";
 import { getGraduationRequirement } from "@/lib/compliance";
-import { student, organizations } from "@/lib/mock-data";
+import { useStore, useStudentData } from "@/lib/student-data";
 import { ProgressRing } from "./progress-ring";
 import { BarChart } from "./bar-chart";
 
 export function RightRail() {
+  const { student } = useStudentData();
+  const store = useStore();
+  const organizations = store.getOrganizations();
   const hoursRequired = getGraduationRequirement(student.schoolState);
 
-  const [follows, setFollows] = useState(
-    () =>
-      new Set(organizations.filter((o) => o.following).map((o) => o.id)),
-  );
-
-  const toggle = (id: string) =>
-    setFollows((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
+  const toggle = (id: string) => store.toggleFollowOrg(id);
 
   return (
     <aside className="sticky top-0 hidden h-screen w-[372px] shrink-0 overflow-y-auto px-6 py-7 xl:block">
@@ -73,7 +61,7 @@ export function RightRail() {
 
         <div className="flex flex-col">
           {organizations.map((o, i) => {
-            const following = follows.has(o.id);
+            const following = o.following;
             return (
               <div
                 key={o.id}

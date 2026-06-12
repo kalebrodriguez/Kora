@@ -23,8 +23,8 @@ import {
   BACKGROUND_COLORS,
   isHatUnlocked,
 } from "@/lib/avatar";
-import { hoursLog, student } from "@/lib/mock-data";
-import { useProfileStore } from "@/lib/mock-profile-store";
+import { useStudentData } from "@/lib/student-data";
+import { useProfileStore } from "@/lib/profile-store";
 import { getSkillEmoji, getSkillLabel, SKILL_SUGGESTIONS } from "@/lib/skills";
 import { useStudentAvatar } from "@/lib/use-student-avatar";
 import { HatIcon, StudentAvatar } from "@/components/student/student-avatar";
@@ -77,6 +77,7 @@ function EmojiOptionButton({
 }
 
 export function ProfilePageClient() {
+  const { hoursLog, student } = useStudentData();
   const {
     avatar: savedAvatar,
     skills,

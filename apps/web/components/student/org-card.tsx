@@ -2,7 +2,8 @@
 
 import { Check, ShieldCheck, UserPlus } from "lucide-react";
 import { ModeratorRow } from "@/components/student/moderator-row";
-import { getModeratorById, tints } from "@/lib/mock-data";
+import { tints } from "@/lib/ui-data";
+import { useModeratorLookup } from "@/lib/student-data";
 import type { Organization } from "@/lib/types/student";
 
 interface OrgCardProps {
@@ -12,6 +13,7 @@ interface OrgCardProps {
 }
 
 export function OrgCard({ org, isFollowing, onToggleFollow }: OrgCardProps) {
+  const { getModeratorById } = useModeratorLookup();
   const moderator = getModeratorById(org.moderatorId);
 
   return (

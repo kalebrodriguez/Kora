@@ -10,7 +10,7 @@ import {
   getThreadPreviewLabel,
   hasUnreadMessages,
 } from "@/lib/messages";
-import { useMessagesStore } from "@/lib/mock-messages-store";
+import { useMessagesStore } from "@/lib/messages-store";
 import type { ConversationThread } from "@/lib/types/student";
 
 interface MessagesPopupProps {

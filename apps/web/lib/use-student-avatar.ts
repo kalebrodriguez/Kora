@@ -7,12 +7,13 @@ import {
   isHatUnlocked,
   normalizeAvatarConfig,
 } from "@/lib/avatar";
-import { hoursLog } from "@/lib/mock-data";
-import { useProfileStore } from "@/lib/mock-profile-store";
+import { useProfileStore } from "@/lib/profile-store";
+import { useStudentData } from "@/lib/student-data";
 import type { AvatarConfig } from "@/lib/types/student";
 
 export function useStudentAvatar(): AvatarConfig {
   const { avatar } = useProfileStore();
+  const { hoursLog } = useStudentData();
   const verifiedHours = getVerifiedHours(hoursLog);
   const normalized = normalizeAvatarConfig(avatar);
 

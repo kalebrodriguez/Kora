@@ -1,6 +1,9 @@
-import { monthlyHours } from "@/lib/mock-data";
+"use client";
+
+import { useStudentData } from "@/lib/student-data";
 
 export function BarChart() {
+  const { monthlyHours } = useStudentData();
   const max = Math.max(...monthlyHours.map((m) => m.value));
   const peak = monthlyHours.reduce((a, b) => (b.value > a.value ? b : a));
   const ticks = [max, Math.round(max / 2), 0];

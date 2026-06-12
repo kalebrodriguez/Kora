@@ -1,64 +1,14 @@
+// Kora schema — SQLite (local, zero-config).
+// SQLite has no enums or scalar lists: roles/statuses are validated strings,
+// skills/categories are JSON-encoded string arrays (see src/json.ts).
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
-}
-
-model User {
-  id        String     @id @default(cuid())
-  clerkId   String     @unique
-  role      Role
-  email     String     @unique
-  firstName String?
-  lastName  String?
-  schoolId  String?
-  school    School?    @relation(fields: [schoolId], references: [id])
-  shiftLogs ShiftLog[]
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-}
-
-model Shift {
-  id          String       @id @default(cuid())
-  title       String
-  description String
-  orgId       String
-  org         Organization @relation(fields: [orgId], references: [id])
-  slots       Int
-  scheduledAt DateTime
-  durationHrs Float
-  skills      String[]
-  waiverText  String?
-  logs        ShiftLog[]
-  createdAt   DateTime     @default(now())
-}
-
-model ShiftLog {
-  id         String    @id @default(cuid())
-  userId     String
-  shiftId    String
-  user       User      @relation(fields: [userId], references: [id])
-  shift      Shift     @relation(fields: [shiftId], references: [id])
-  hours      Float
-  qrToken    String?   @unique
-  verifiedAt DateTime?
-  verifiedBy String?
-  createdAt  DateTime  @default(now())
-
-  @@unique([userId, shiftId])
-}
-
-model Organization {
-  id        String   @id @default(cuid())
-  name      String
-  website   String?
-  schoolId  String?
-  shifts    Shift[]
-  createdAt DateTime @default(now())
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model School {
@@ -70,8 +20,140 @@ model School {
   createdAt DateTime @default(now())
 }
 
-enum Role {
-  STUDENT
-  ORG_MODERATOR
-  SCHOOL_ADMIN
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  passwordHash  String
+  role          String // STUDENT | ORG_MODERATOR | SCHOOL_ADMIN
+  firstName     String
+  lastName      String
+  avatar        String?
+  grade         String?
+  roleTitle     String?
+  skills        String         @default("[]") // JSON string[]
+  streakWeeks   Int            @default(0)
+  schoolId      String?
+  school        School?        @relation(fields: [schoolId], references: [id])
+  shiftLogs     ShiftLog[]
+  commitments   Commitment[]
+  savedShifts   SavedShift[]
+  orgFollows    OrgFollow[]
+  notifications Notification[]
+  moderatedOrg  Organization?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model Organization {
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  avatar      String?
+  verified    Boolean     @default(false)
+  distance    String?
+  categories  String      @default("[]") // JSON CategoryKey[]
+  moderatorId String?     @unique
+  moderator   User?       @relation(fields: [moderatorId], references: [id])
+  shifts      Shift[]
+  followers   OrgFollow[]
+  createdAt   DateTime    @default(now())
+}
+
+model Shift {
+  id           String       @id @default(cuid())
+  title        String
+  description  String
+  orgId        String
+  org          Organization @relation(fields: [orgId], references: [id])
+  category     String // display label, e.g. "Environment"
+  categoryKey  String // community | environment | education
+  categoryTint String // lavender | pink | sky
+  slots        Int
+  // Signups made outside Kora; spotsLeft = slots - externalSignups - commitments.
+  externalSignups Int       @default(0)
+  scheduledAt  DateTime
+  durationHrs  Float
+  skills       String       @default("[]") // JSON string[]
+  img          String?
+  waiverText   String?
+  logs         ShiftLog[]
+  commitments  Commitment[]
+  savedBy      SavedShift[]
+  qrSessions   QrSession[]
+  createdAt    DateTime     @default(now())
+}
+
+model Commitment {
+  id        String   @id @default(cuid())
+  userId    String
+  shiftId   String
+  user      User     @relation(fields: [userId], references: [id])
+  shift     Shift    @relation(fields: [shiftId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, shiftId])
+}
+
+model SavedShift {
+  id        String   @id @default(cuid())
+  userId    String
+  shiftId   String
+  user      User     @relation(fields: [userId], references: [id])
+  shift     Shift    @relation(fields: [shiftId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, shiftId])
+}
+
+model OrgFollow {
+  id        String       @id @default(cuid())
+  userId    String
+  orgId     String
+  user      User         @relation(fields: [userId], references: [id])
+  org       Organization @relation(fields: [orgId], references: [id])
+  createdAt DateTime     @default(now())
+
+  @@unique([userId, orgId])
+}
+
+model ShiftLog {
+  id          String    @id @default(cuid())
+  userId      String
+  shiftId     String
+  user        User      @relation(fields: [userId], references: [id])
+  shift       Shift     @relation(fields: [shiftId], references: [id])
+  activity    String
+  hours       Float
+  status      String // verified | pending | flagged
+  qrToken     String?   @unique
+  qrExpiresAt DateTime?
+  verifiedAt  DateTime?
+  verifiedBy  String?
+  completedAt DateTime
+  createdAt   DateTime  @default(now())
+}
+
+// A moderator-issued QR session for a shift. Students scan the token to log
+// verified hours. Token is HMAC-signed; raw shift IDs never appear in the QR.
+model QrSession {
+  id        String   @id @default(cuid())
+  shiftId   String
+  shift     Shift    @relation(fields: [shiftId], references: [id])
+  token     String   @unique
+  issuedAt  DateTime
+  expiresAt DateTime
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  kind      String // hours_verified | motivation | milestone
+  title     String
+  body      String
+  href      String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
 }

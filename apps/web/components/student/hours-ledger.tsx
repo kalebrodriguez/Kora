@@ -6,7 +6,7 @@ import {
   Clock3,
   AlertTriangle,
 } from "lucide-react";
-import { tints } from "@/lib/mock-data";
+import { tints } from "@/lib/ui-data";
 import type { LogStatus, ShiftLog } from "@/lib/types/student";
 import {
   HoursFilters,

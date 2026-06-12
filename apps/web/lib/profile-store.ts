@@ -2,7 +2,8 @@
 
 import { useCallback, useSyncExternalStore } from "react";
 import { DEFAULT_AVATAR_CONFIG, normalizeAvatarConfig } from "@/lib/avatar";
-import { student } from "@/lib/mock-data";
+import { updateSkillsAction } from "@/app/(student)/actions";
+import { DEFAULT_SKILLS } from "@/lib/ui-data";
 import type { AvatarConfig } from "@/lib/types/student";
 
 const STORAGE_KEY = "kora-profile-store-v1";
@@ -15,7 +16,7 @@ interface ProfileState {
 function getInitialState(): ProfileState {
   return {
     avatar: { ...DEFAULT_AVATAR_CONFIG },
-    skills: [...student.skills],
+    skills: [...DEFAULT_SKILLS],
   };
 }
 
@@ -89,9 +90,14 @@ function subscribe(listener: () => void): () => void {
 }
 
 function persist(next: ProfileState): void {
+  const skillsChanged =
+    JSON.stringify(next.skills) !== JSON.stringify(state.skills);
   state = next;
   saveState(next);
   emitChange();
+  if (skillsChanged) {
+    void updateSkillsAction(next.skills);
+  }
 }
 
 export function useProfileStore() {

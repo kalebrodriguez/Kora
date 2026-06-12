@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { rankShiftsForStudent } from "@/lib/matching";
-import { useMockStore } from "@/lib/mock-store";
-import { useProfileStore } from "@/lib/mock-profile-store";
+import { useStore } from "@/lib/student-data";
+import { useProfileStore } from "@/lib/profile-store";
 import { ShiftCard } from "@/components/student/shift-card";
 import {
   ShiftFilters,
@@ -15,7 +15,7 @@ function countSkillOverlap(studentSkills: string[], shiftSkills: string[]) {
 }
 
 export function EventsPageClient() {
-  const store = useMockStore();
+  const store = useStore();
   const { skills } = useProfileStore();
   const [category, setCategory] = useState<CategoryFilter>("all");
   const [skill, setSkill] = useState("");

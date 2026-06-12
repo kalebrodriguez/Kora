@@ -1,11 +1,23 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [".env.local"],
-  "globalEnv": ["QR_HMAC_SECRET"],
+  "globalDependencies": [
+    ".env.local"
+  ],
+  "globalEnv": [
+    "QR_HMAC_SECRET",
+    "AUTH_SECRET",
+    "DATABASE_URL",
+    "NODE_ENV"
+  ],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "dist/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "dist/**"
+      ]
     },
     "dev": {
       "cache": false,
@@ -13,7 +25,9 @@
     },
     "lint": {},
     "type-check": {
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     },
     "db:push": {
       "cache": false
@@ -21,6 +35,9 @@
     "db:studio": {
       "cache": false,
       "persistent": true
+    },
+    "db:seed": {
+      "cache": false
     }
   }
 }

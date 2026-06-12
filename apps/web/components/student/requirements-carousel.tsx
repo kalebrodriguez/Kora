@@ -17,7 +17,7 @@ import {
   getVerifiedHours,
   getVerifiedHoursByCategory,
 } from "@/lib/compliance";
-import { hoursLog, student } from "@/lib/mock-data";
+import { useStudentData } from "@/lib/student-data";
 import { ProgressRing } from "@/components/student/progress-ring";
 import type { CategoryKey } from "@/lib/types/student";
 
@@ -116,6 +116,7 @@ function RequirementActions() {
 }
 
 export function RequirementsCarousel() {
+  const { hoursLog, student } = useStudentData();
   const state = student.schoolState;
   const graduationRequired = getGraduationRequirement(state);
   const brightFutures = getBrightFuturesTiers(state);

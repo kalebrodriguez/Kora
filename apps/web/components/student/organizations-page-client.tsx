@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import { useMockStore } from "@/lib/mock-store";
+import { useStore } from "@/lib/student-data";
 import { OrgCard } from "@/components/student/org-card";
 import type { CategoryKey } from "@/lib/types/student";
 
@@ -16,7 +16,7 @@ const categoryOptions: { value: CategoryFilter; label: string }[] = [
 ];
 
 export function OrganizationsPageClient() {
-  const store = useMockStore();
+  const store = useStore();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<CategoryFilter>("all");
 

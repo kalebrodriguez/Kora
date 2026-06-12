@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Settings, LogOut, Sparkles, PanelLeftClose, PanelLeft } from "lucide-react";
+import { logout } from "@/app/login/actions";
 import { SidebarNav } from "@/components/student/sidebar-nav";
 import { SidebarMessagesSection } from "@/components/student/sidebar-messages-section";
 
@@ -148,10 +149,11 @@ export function Sidebar() {
             Settings
           </span>
         </Link>
-        <Link
-          href="#"
+        <button
+          type="button"
+          onClick={() => void logout()}
           title={collapsed ? "Logout" : undefined}
-          className={`flex items-center rounded-chip py-2.5 text-[15px] font-semibold text-danger transition-all ${SIDEBAR_EASE} hover:bg-danger/10 ${
+          className={`flex w-full items-center rounded-chip py-2.5 text-[15px] font-semibold text-danger transition-all ${SIDEBAR_EASE} hover:bg-danger/10 ${
             collapsed ? "justify-center px-2.5" : "gap-3 px-3"
           }`}
         >
@@ -161,7 +163,7 @@ export function Sidebar() {
           >
             Logout
           </span>
-        </Link>
+        </button>
       </div>
     </aside>
   );

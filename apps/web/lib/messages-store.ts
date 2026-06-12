@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
-import { conversationThreads as seedThreads } from "@/lib/mock-data";
+import { conversationThreads as seedThreads } from "@/lib/ui-data";
 import type { ChatMessage, ConversationThread } from "@/lib/types/student";
 
 const STORAGE_KEY = "kora-messages-store-v1";

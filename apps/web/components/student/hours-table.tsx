@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -5,7 +7,9 @@ import {
   Clock3,
   AlertTriangle,
 } from "lucide-react";
-import { hoursLog, tints, type LogStatus } from "@/lib/mock-data";
+import { tints } from "@/lib/ui-data";
+import { useStudentData } from "@/lib/student-data";
+import type { LogStatus } from "@/lib/types/student";
 
 const statusConfig: Record<
   LogStatus,
@@ -29,6 +33,7 @@ const statusConfig: Record<
 };
 
 export function HoursTable() {
+  const { hoursLog } = useStudentData();
   return (
     <section>
       <div className="mb-4 flex items-center justify-between">

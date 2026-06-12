@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Mail } from "lucide-react";
 import { getSidebarPreviewThreads, hasUnreadMessages } from "@/lib/messages";
-import { useMessagesStore } from "@/lib/mock-messages-store";
+import { useMessagesStore } from "@/lib/messages-store";
 
 const SIDEBAR_EASE =
   "duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]";

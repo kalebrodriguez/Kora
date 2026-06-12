@@ -8,12 +8,12 @@ import { NotificationsPopup } from "@/components/student/notifications-popup";
 import { StudentAvatar } from "@/components/student/student-avatar";
 import { hasUnreadMessages } from "@/lib/messages";
 import { hasUnreadNotifications } from "@/lib/notifications";
-import { useMessagesStore } from "@/lib/mock-messages-store";
-import { useNotificationsStore } from "@/lib/mock-notifications-store";
+import { useMessagesStore } from "@/lib/messages-store";
+import { useNotificationsStore, useStudentData } from "@/lib/student-data";
 import { useStudentAvatar } from "@/lib/use-student-avatar";
-import { student } from "@/lib/mock-data";
 
 export function Topbar() {
+  const { student } = useStudentData();
   const [messagesOpen, setMessagesOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const { threads } = useMessagesStore();

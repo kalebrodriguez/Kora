@@ -4,15 +4,16 @@ import Link from "next/link";
 import { ScanLine } from "lucide-react";
 import { PageHeader } from "@/components/student/page-header";
 import { ScanQrPanel } from "@/components/student/scan-qr-panel";
-import { useMockStore } from "@/lib/mock-store";
-import { getModeratorById, tints } from "@/lib/mock-data";
+import { useModeratorLookup, useStore } from "@/lib/student-data";
+import { tints } from "@/lib/ui-data";
 
 interface LogHoursPageClientProps {
   demoToken?: string;
 }
 
 export function LogHoursPageClient({ demoToken }: LogHoursPageClientProps) {
-  const store = useMockStore();
+  const store = useStore();
+  const { getModeratorById } = useModeratorLookup();
   const committedShifts = store.getCommittedShifts();
 
   return (

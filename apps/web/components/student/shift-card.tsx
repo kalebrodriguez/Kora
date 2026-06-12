@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { Heart, MapPin, Users } from "lucide-react";
 import { ModeratorRow } from "@/components/student/moderator-row";
-import { getModeratorById, tints } from "@/lib/mock-data";
+import { tints } from "@/lib/ui-data";
+import { useModeratorLookup } from "@/lib/student-data";
 import type { Shift } from "@/lib/types/student";
 
 interface ShiftCardProps {
@@ -25,6 +26,7 @@ export function ShiftCard({
   onSave,
   onCommit,
 }: ShiftCardProps) {
+  const { getModeratorById } = useModeratorLookup();
   const tint = tints[shift.categoryTint];
   const canCommit = !isCommitted && shift.spotsLeft > 0;
   const moderator = getModeratorById(shift.moderatorId);

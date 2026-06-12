@@ -1,6 +1,9 @@
+"use client";
+
 import { HeartHandshake, Leaf, GraduationCap, MoreVertical } from "lucide-react";
 import { getCategoryGoals } from "@/lib/compliance";
-import { categories, student, tints } from "@/lib/mock-data";
+import { tints } from "@/lib/ui-data";
+import { useStudentData } from "@/lib/student-data";
 import type { CategoryKey } from "@/lib/types/student";
 
 const icons: Record<CategoryKey, typeof HeartHandshake> = {
@@ -10,6 +13,7 @@ const icons: Record<CategoryKey, typeof HeartHandshake> = {
 };
 
 export function CategoryCards() {
+  const { categories, student } = useStudentData();
   const categoryGoals = getCategoryGoals(student.schoolState);
 
   return (

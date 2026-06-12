@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
+import { getHoursLog } from "@kora/db";
 import { PageShell } from "@/components/student/page-shell";
 import { PageHeader } from "@/components/student/page-header";
 import { HoursLedger } from "@/components/student/hours-ledger";
-import { getAllHoursLogs } from "@/lib/mock-store-server";
+import { requireRole } from "@/lib/auth/session";
 
-export default function HoursPage() {
-  const logs = getAllHoursLogs();
+export default async function HoursPage() {
+  const user = await requireRole("STUDENT");
+  const logs = await getHoursLog(user.id);
 
   return (
     <PageShell>

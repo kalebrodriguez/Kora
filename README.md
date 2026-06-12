@@ -6,60 +6,80 @@ Kora replaces forged paper signatures and legacy software (x2VOL) with a verifie
 AI-matched platform for student community service hours.
 
 **Three portals. One source of truth.**
-- **Student Dashboard** — AI-matched shifts, QR-verified sign-off, hours ledger
-- **Organization Portal** — Shift builder, automated verification, waiver gating
-- **Admin Console** — FERPA-compliant compliance master-list, fraud detection, PowerSchool export
+- **Student Dashboard** — matched shifts, QR-verified check-in, hours ledger ✅ live
+- **Organization Portal** — live QR check-in codes, roster, hours verification queue ✅ live
+- **Admin Console** — compliance master-list, flagged-hours review, CSV export ✅ live
+
+## Getting Started
+
+```bash
+git clone https://github.com/VGGladiator/Kora_2.0.git kora
+cd kora
+npm install
+npm run setup     # creates + seeds the local SQLite database
+npm run dev       # http://localhost:3000
+```
+
+No API keys or external services required — the app runs fully local
+(SQLite via Prisma, built-in session auth).
+
+### Demo accounts (password: `demo1234`)
+
+| Account | Role | What you can do |
+|---|---|---|
+| `student@demo.kora` | Student (Maya Chen) | Dashboard, commit to shifts, check in with QR codes, hours ledger, goals |
+| `org@demo.kora` | Org moderator (Marcus Webb) | Display check-in codes, view roster, verify/flag pending hours |
+| `admin@demo.kora` | School admin (Dana Whitfield) | Compliance master-list, flagged hours, CSV export |
+| `jordan@demo.kora`, `sofia@demo.kora` | Students | Extra roster members |
+
+### The verification loop
+
+1. Sign in as the **student** → commit to a shift on **Events**
+2. Sign in as the **moderator** (incognito window) → open the shift → **Display check-in code**
+3. Back as the student → **Log Hours** → enter/scan the code → hours are verified instantly
+4. Verified hours flow into the ledger, dashboard, goals, and notifications
+5. Students who miss the scan can be verified manually from the org **Verification queue**
 
 ## Directory Structure
 
 | Path | Description |
 |---|---|
-| [`apps/web`](./apps/web) | Student dashboard, org portal, QR sign-off flow |
-| [`apps/admin`](./apps/admin) | School admin compliance console |
-| [`packages/db`](./packages/db) | Prisma schema, client, all DB queries |
-| [`packages/ui`](./packages/ui) | Shared shadcn/ui component library |
-| [`packages/config`](./packages/config) | Shared TS, ESLint, Tailwind configs |
-| [`services/matching-engine`](./services/matching-engine) | Python FastAPI AI matching service |
+| [`apps/web`](./apps/web) | Student dashboard + org portal + QR check-in flow |
+| [`apps/web`](./apps/web)`/app/admin` | School admin console (compliance, export) |
+| [`packages/db`](./packages/db) | Prisma schema, SQLite client, all DB queries, seed |
+| [`services/matching-engine`](./services/matching-engine) | Python FastAPI AI matching (Phase 3 — empty) |
 | [`docs/architecture.md`](./docs/architecture.md) | System design, auth flow, QR scheme |
 | [`CLAUDE.md`](./CLAUDE.md) | AI coding context for Claude Code |
-| [`.cursor/rules`](./.cursor/rules) | Cursor IDE coding rules |
-
 
 ## Tech Stack
 | Layer | Tech |
 |---|---|
-| Frontend | Next.js 14, Tailwind CSS, shadcn/ui |
-| Backend | tRPC, Prisma |
-| Database | PostgreSQL (Supabase) |
-| Auth | Clerk |
-| AI Matching | Python, FastAPI, OpenAI embeddings |
-| QR Verification | HMAC-signed tokens |
-| Infra | Vercel (web), Railway (services) |
+| Frontend | Next.js 16 (App Router), Tailwind CSS v4 |
+| Backend | React Server Components + Server Actions |
+| Database | SQLite via Prisma (swap `provider` for Postgres in prod) |
+| Auth | HMAC-signed session cookies, role-based guards |
+| QR Verification | HMAC-signed tokens, 15-min expiry, one redemption per student |
+| Compliance | JSON rules engine (FL Bright Futures, graduation thresholds) |
 
-## Getting Started
+## Commands
 
 ```bash
-git clone https://github.com/VGGladiator/Kora_2.0.git
-cd kora
-npm install
-cp .env.example .env.local
-npm run dev
+npm run dev        # start all apps
+npm run build      # full monorepo build
+npm run lint       # eslint, zero warnings
+npm run setup      # db:push + db:seed
+npm run db:push    # push Prisma schema to SQLite
+npm run db:seed    # reset demo data
+npm run db:studio  # Prisma Studio
 ```
 
-## Monorepo Structure
-apps/web         → Student + Org portal
-apps/admin       → School admin console
-packages/db      → Prisma schema + all DB queries
-packages/ui      → Shared component library
-packages/config  → Shared ESLint, TS, Tailwind configs
-services/matching-engine → Python FastAPI AI matching
-
 ## Roadmap
-- [ ] MVP: Student dashboard + QR sign-off
-- [ ] Organization portal + shift builder
-- [ ] Admin console + PowerSchool export
-- [ ] AI matching engine
-- [ ] Multi-state compliance rules engine (FL Bright Futures, WA graduation)
+- [x] MVP: Student dashboard + QR check-in (real DB + auth)
+- [x] Organization portal: QR display + verification queue
+- [x] Admin console: compliance master-list + CSV export
+- [ ] AI matching engine (FastAPI + embeddings)
+- [ ] Multi-state compliance rules (WA graduation, more FL tiers)
+- [ ] Production deploy: Postgres + managed auth
 
 ## Status
-🚧 Pre-launch — Tampa, FL beta targeting robotics teams + FBLA chapters
+✅ MVP loop functional — Tampa, FL beta targeting robotics teams + FBLA chapters

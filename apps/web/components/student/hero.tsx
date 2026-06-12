@@ -1,10 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Plus } from "lucide-react";
 import {
   getBrightFuturesTiers,
   getGraduationRequirement,
 } from "@/lib/compliance";
-import { student } from "@/lib/mock-data";
+import { useStudentData } from "@/lib/student-data";
 
 function Sparkle({ className = "" }: { className?: string }) {
   return (
@@ -19,6 +21,7 @@ function Sparkle({ className = "" }: { className?: string }) {
 }
 
 export function Hero() {
+  const { student } = useStudentData();
   const hoursRequired = getGraduationRequirement(student.schoolState);
   const brightFutures = getBrightFuturesTiers(student.schoolState);
   const remaining = hoursRequired - student.hoursLogged;
