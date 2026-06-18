@@ -1,40 +1,66 @@
 @import "tailwindcss";
 
 @theme {
-  /* Kora brand palette */
-  /* primary darkened so white button/label text meets WCAG AA (4.5:1).
-     The brighter teal lives on in the decorative hero gradient below. */
-  --color-primary: #007e83;
-  --color-primary-deep: #006d73;
-  --color-banner-from: #00c4cc;
-  --color-banner-to: #00a8b0;
-  --color-ink: #2d2d2d;
-  --color-ink-button: #2d2d2d;
-  --color-muted: #757575;
-  --color-canvas: #faf9f6;
-  --color-sidebar: #f3f2ee;
+  /* Kora — "Civic Record" palette: editorial / system-of-record.
+     Warm paper canvas, grown-up teal, brass accent, hairline separators.
+     All text pairs verified for WCAG AA (>=4.5:1). */
+  --color-primary: #0b5d63; /* deep teal — CTAs, white text = 7.6:1 */
+  --color-primary-deep: #094a4f; /* hover */
+  --color-accent: #b5791f; /* brass — streaks, active marks (not white-text) */
+  --color-accent-deep: #8a5e18; /* brass text on light */
+
+  /* Decorative hero gradient: calm sage -> paper (no more candy teal) */
+  --color-banner-from: #dce9e4;
+  --color-banner-to: #efede6;
+
+  --color-ink: #15202b;
+  --color-ink-button: #15202b;
+  --color-muted: #586068;
+  --color-canvas: #f7f5f0;
+  --color-sidebar: #efede6;
   --color-surface: #ffffff;
-  --color-accent-lavender: #efeeea;
-  --color-accent-pink: #fbe4f1;
-  --color-accent-sky: #ddf0fb;
-  --color-icon-pink: #ec68a6;
-  --color-icon-sky: #4db7e8;
-  --color-chart-track: #e8e6e0;
-  --color-danger: #f4663f;
-  --color-success: #4caf50;
-  --color-pending: #ffb300;
-  --color-flagged: #f4663f;
+  --color-hairline: #e4e0d8;
 
-  --font-sans: var(--font-inter), "Plus Jakarta Sans", system-ui, sans-serif;
+  /* Category tints (community / environment / education) — muted, harmonious.
+     Token names kept for compatibility; values reworked off the new palette. */
+  --color-accent-lavender: #e2ecea; /* community — pairs with text-primary */
+  --color-accent-sky: #e1eaf0; /* environment — pairs with text-icon-sky */
+  --color-accent-pink: #f1e6dd; /* education — pairs with text-icon-pink */
+  --color-icon-sky: #1f5f84;
+  --color-icon-pink: #9c4d26;
 
-  --radius-chip: 12px;
-  --radius-card: 20px;
+  --color-chart-track: #e4e0d8;
+  --color-danger: #b23a2e;
+  --color-success: #2f7d5b;
+  --color-pending: #b5791f;
+  --color-flagged: #b23a2e;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+
+  /* Tighter, more architectural corners (was 12/20/999). */
+  --radius-chip: 8px;
+  --radius-card: 12px;
   --radius-pill: 999px;
 
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.05);
-  --shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.08);
+  /* One restrained elevation tier; cards lean on hairline borders instead. */
+  --shadow-card: 0 1px 2px rgba(21, 32, 43, 0.06);
+  --shadow-raised: 0 10px 30px rgba(21, 32, 43, 0.12);
 
   --max-width-shell: 1440px;
+}
+
+/* Editorial headings — serif display face gives the institutional character. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+}
+
+/* Cards carry a hairline border so structure reads without heavy shadows. */
+.rounded-card.shadow-card {
+  border: 1px solid var(--color-hairline);
 }
 
 html {
