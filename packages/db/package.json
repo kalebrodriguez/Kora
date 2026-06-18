@@ -12,6 +12,7 @@
   "scripts": {
     "generate": "prisma generate",
     "db:push": "prisma db push",
+    "db:reset": "prisma db push --force-reset --accept-data-loss",
     "db:studio": "prisma studio",
     "db:seed": "tsx src/seed.ts"
   },

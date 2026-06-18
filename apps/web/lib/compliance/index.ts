@@ -3,6 +3,23 @@ import type { CategoryKey, ShiftLog } from "@/lib/types/student";
 
 export type StateCode = keyof typeof rules;
 
+const STATE_NAMES: Record<StateCode, string> = {
+  FL: "Florida",
+  WA: "Washington",
+};
+
+/** States Kora currently has compliance rules for (drives school sign-up). */
+export function listSupportedStates(): { code: StateCode; name: string }[] {
+  return (Object.keys(rules) as StateCode[]).map((code) => ({
+    code,
+    name: STATE_NAMES[code],
+  }));
+}
+
+export function isSupportedState(state: string): state is StateCode {
+  return state in rules;
+}
+
 function assertState(state: string): asserts state is StateCode {
   if (!(state in rules)) {
     throw new Error(`Unknown state code: ${state}`);

@@ -2,11 +2,17 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { listSignupSchools } from "@kora/db";
 import { getSessionUser, roleHome } from "@/lib/auth/session";
+import { listSupportedStates } from "@/lib/compliance";
 import { SignupForm } from "./signup-form";
 
 export const metadata = {
   title: "Create account — Kora",
 };
+
+export interface StateOption {
+  code: string;
+  name: string;
+}
 
 export default async function SignupPage() {
   const user = await getSessionUser();
@@ -15,6 +21,7 @@ export default async function SignupPage() {
   }
 
   const schools = await listSignupSchools();
+  const states: StateOption[] = listSupportedStates();
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-canvas px-4 py-10">
@@ -25,18 +32,11 @@ export default async function SignupPage() {
           </div>
           <h1 className="text-2xl font-bold text-ink">Create your account</h1>
           <p className="mt-1 text-sm text-muted">
-            Find opportunities and prove your verified service hours.
+            Choose your role to get started on Kora.
           </p>
         </div>
 
-        {schools.length === 0 ? (
-          <div className="rounded-card bg-surface p-6 text-center text-sm text-muted shadow-card">
-            No schools are set up on Kora yet. Ask your school administrator to
-            onboard your school first.
-          </div>
-        ) : (
-          <SignupForm schools={schools} />
-        )}
+        <SignupForm schools={schools} states={states} />
 
         <p className="mt-6 text-center text-sm text-muted">
           Already have an account?{" "}
