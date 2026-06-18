@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionUser, roleHome } from "@/lib/auth/session";
 import { LoginForm } from "./login-form";
@@ -25,6 +26,15 @@ export default async function LoginPage() {
           </p>
         </div>
         <LoginForm />
+        <p className="mt-6 text-center text-sm text-muted">
+          New student?{" "}
+          <Link
+            href="/signup"
+            className="font-semibold text-primary hover:underline"
+          >
+            Create an account
+          </Link>
+        </p>
       </div>
     </main>
   );
