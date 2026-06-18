@@ -2,8 +2,10 @@
 
 @theme {
   /* Kora brand palette */
-  --color-primary: #00c4cc;
-  --color-primary-deep: #00a8b0;
+  /* primary darkened so white button/label text meets WCAG AA (4.5:1).
+     The brighter teal lives on in the decorative hero gradient below. */
+  --color-primary: #007e83;
+  --color-primary-deep: #006d73;
   --color-banner-from: #00c4cc;
   --color-banner-to: #00a8b0;
   --color-ink: #2d2d2d;

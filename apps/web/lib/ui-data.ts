@@ -6,6 +6,35 @@ import type {
   TintKey,
 } from "@/lib/types/student";
 
+// Local initials-monogram avatars for this static demo data (kept off the DB
+// import path so this client module never pulls in Prisma). Mirrors
+// packages/db/src/avatar.ts.
+const MONO_PALETTE = [
+  { bg: "#D7F4F2", fg: "#075E63" },
+  { bg: "#ECEAFB", fg: "#5B4FC2" },
+  { bg: "#DDF0FB", fg: "#156A9C" },
+  { bg: "#FBE4F1", fg: "#A8316F" },
+  { bg: "#FCEBD6", fg: "#8A5410" },
+  { bg: "#E6EAE9", fg: "#3E4744" },
+];
+function monogram(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  const text = (
+    parts.length <= 1
+      ? (parts[0] ?? "?").slice(0, 2)
+      : parts[0]![0]! + parts[parts.length - 1]![0]!
+  ).toUpperCase();
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) | 0;
+  const { bg, fg } = MONO_PALETTE[Math.abs(h) % MONO_PALETTE.length]!;
+  const svg =
+    `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">` +
+    `<rect width="80" height="80" rx="40" fill="${bg}"/>` +
+    `<text x="40" y="40" dy="0.34em" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="600" fill="${fg}">${text}</text>` +
+    `</svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
 export const DEFAULT_SKILLS = [
   "tutoring",
   "communication",
@@ -19,21 +48,21 @@ export const friends: Friend[] = [
     name: "Jordan Park",
     role: "38 hrs logged",
     avatar:
-      "https://api.dicebear.com/9.x/avataaars/svg?seed=Jordan&backgroundColor=DDF0FB",
+      monogram("Jordan Park"),
   },
   {
     id: "friend_sofia",
     name: "Sofia Reyes",
     role: "41 hrs logged",
     avatar:
-      "https://api.dicebear.com/9.x/avataaars/svg?seed=Sofia&backgroundColor=FBE4F1",
+      monogram("Sofia Reyes"),
   },
   {
     id: "friend_devin",
     name: "Devin Walters",
     role: "29 hrs logged",
     avatar:
-      "https://api.dicebear.com/9.x/avataaars/svg?seed=Devin&backgroundColor=ECEAFB",
+      monogram("Devin Walters"),
   },
 ];
 
@@ -51,7 +80,7 @@ export const conversationThreads: ConversationThread[] = [
     contactId: "friend_jordan",
     contactName: "Jordan Park",
     contactAvatar:
-      "https://api.dicebear.com/9.x/avataaars/svg?seed=Jordan&backgroundColor=DDF0FB",
+      monogram("Jordan Park"),
     contactSubtitle: "38 hrs logged",
     messages: [
       {
@@ -83,7 +112,7 @@ export const conversationThreads: ConversationThread[] = [
     contactId: "mod_hope",
     contactName: "Marcus Webb",
     contactAvatar:
-      "https://api.dicebear.com/9.x/avataaars/svg?seed=Marcus&backgroundColor=ECEAFB",
+      monogram("Marcus Webb"),
     contactSubtitle: "Kitchen Operations Lead",
     shiftId: "shift_food_bank",
     shiftTitle: "Weekend Food Bank Sorting Shift",
@@ -118,7 +147,7 @@ export const conversationThreads: ConversationThread[] = [
     contactId: "friend_sofia",
     contactName: "Sofia Reyes",
     contactAvatar:
-      "https://api.dicebear.com/9.x/avataaars/svg?seed=Sofia&backgroundColor=FBE4F1",
+      monogram("Sofia Reyes"),
     contactSubtitle: "41 hrs logged",
     messages: [
       {
@@ -138,7 +167,7 @@ export const conversationThreads: ConversationThread[] = [
     contactId: "mod_library",
     contactName: "Priya Nair",
     contactAvatar:
-      "https://api.dicebear.com/9.x/avataaars/svg?seed=Priya&backgroundColor=FBE4F1",
+      monogram("Priya Nair"),
     contactSubtitle: "Youth Programs Director",
     shiftId: "shift_reading_buddies",
     shiftTitle: "After-School Reading Buddies (Grades 1–3)",
@@ -179,7 +208,7 @@ export const conversationThreads: ConversationThread[] = [
     contactId: "mod_parks",
     contactName: "Elena Vasquez",
     contactAvatar:
-      "https://api.dicebear.com/9.x/avataaars/svg?seed=Elena&backgroundColor=DDF0FB",
+      monogram("Elena Vasquez"),
     contactSubtitle: "Parks Volunteer Coordinator",
     shiftId: "shift_riverside_cleanup",
     shiftTitle: "Riverside Park Cleanup & Tree Planting",

@@ -9,6 +9,7 @@
  */
 import { prisma } from "./client";
 import { toJsonArray } from "./json";
+import { monogramAvatar } from "./avatar";
 import { hashPassword } from "./password";
 
 const DAY = 24 * 60 * 60 * 1000;
@@ -22,11 +23,9 @@ function daysFromNow(days: number, hour: number, minute = 0): Date {
 const PASSWORD = hashPassword("demo1234");
 
 const avatars = {
-  maya: "https://api.dicebear.com/9.x/avataaars/svg?seed=Maya&backgroundColor=ECEAFB",
-  jordan:
-    "https://api.dicebear.com/9.x/avataaars/svg?seed=Jordan&backgroundColor=DDF0FB",
-  sofia:
-    "https://api.dicebear.com/9.x/avataaars/svg?seed=Sofia&backgroundColor=FBE4F1",
+  maya: monogramAvatar("Maya Chen"),
+  jordan: monogramAvatar("Jordan Park"),
+  sofia: monogramAvatar("Sofia Reyes"),
 };
 
 interface ModeratorSeed {
@@ -206,8 +205,7 @@ async function main() {
       firstName: "Dana",
       lastName: "Whitfield",
       roleTitle: "Service Hours Coordinator",
-      avatar:
-        "https://api.dicebear.com/9.x/avataaars/svg?seed=Dana&backgroundColor=DDF0FB",
+      avatar: monogramAvatar("Dana Whitfield"),
       schoolId: school.id,
     },
   });
@@ -222,7 +220,7 @@ async function main() {
         firstName: mod.firstName,
         lastName: mod.lastName,
         roleTitle: mod.roleTitle,
-        avatar: `https://api.dicebear.com/9.x/avataaars/svg?seed=${mod.avatarSeed}&backgroundColor=${mod.avatarBg}`,
+        avatar: monogramAvatar(`${mod.firstName} ${mod.lastName}`),
       },
     });
   }
@@ -234,7 +232,7 @@ async function main() {
         id: org.id,
         name: org.name,
         description: org.description,
-        avatar: `https://api.dicebear.com/9.x/icons/svg?seed=${org.avatarSeed}&backgroundColor=${org.avatarBg}`,
+        avatar: monogramAvatar(org.name, { square: true }),
         verified: true,
         distance: org.distance,
         categories: toJsonArray(org.categories),

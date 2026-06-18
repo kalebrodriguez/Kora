@@ -1,3 +1,4 @@
+import { monogramAvatar } from "../avatar";
 import { prisma } from "../client";
 import { logToView, shiftToView } from "../mappers";
 import type {
@@ -41,8 +42,7 @@ export async function getModeratorContext(
       id: user.id,
       name: `${user.firstName} ${user.lastName}`,
       avatar:
-        user.avatar ??
-        `https://api.dicebear.com/9.x/avataaars/svg?seed=${user.firstName}`,
+        user.avatar ?? monogramAvatar(`${user.firstName} ${user.lastName}`),
       roleTitle: user.roleTitle ?? "Volunteer Coordinator",
     },
     org: {
@@ -51,7 +51,7 @@ export async function getModeratorContext(
       description: user.moderatedOrg.description,
       avatar:
         user.moderatedOrg.avatar ??
-        `https://api.dicebear.com/9.x/icons/svg?seed=${user.moderatedOrg.id}`,
+        monogramAvatar(user.moderatedOrg.name, { square: true }),
       verified: user.moderatedOrg.verified,
     },
   };
@@ -108,8 +108,7 @@ export async function getShiftRoster(shiftId: string): Promise<OrgRosterEntry[]>
       userId: c.userId,
       name: `${c.user.firstName} ${c.user.lastName}`,
       avatar:
-        c.user.avatar ??
-        `https://api.dicebear.com/9.x/avataaars/svg?seed=${c.user.firstName}`,
+        c.user.avatar ?? monogramAvatar(`${c.user.firstName} ${c.user.lastName}`),
       committedAt: c.createdAt.toISOString(),
       logStatus: (log?.status as LogStatus | undefined) ?? null,
       loggedHours: log?.hours ?? null,
@@ -132,8 +131,7 @@ export async function getPendingLogsForOrg(
     shiftTitle: log.shift.title,
     studentName: `${log.user.firstName} ${log.user.lastName}`,
     studentAvatar:
-      log.user.avatar ??
-      `https://api.dicebear.com/9.x/avataaars/svg?seed=${log.user.firstName}`,
+      log.user.avatar ?? monogramAvatar(`${log.user.firstName} ${log.user.lastName}`),
     activity: log.activity,
     hours: log.hours,
     status: log.status as LogStatus,

@@ -33,3 +33,8 @@ venv/
 
 # Keep the local-dev DATABASE_URL (not a secret) so fresh clones work
 !packages/db/.env
+
+# Agent tooling (not part of the app)
+.agents/
+AGENTS.md
+.claude/launch.json

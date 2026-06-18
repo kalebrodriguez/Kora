@@ -1,3 +1,4 @@
+import { monogramAvatar } from "../avatar";
 import { prisma } from "../client";
 import { parseStringArray } from "../json";
 import { logToView, shiftToView } from "../mappers";
@@ -31,8 +32,7 @@ export async function getStudentProfile(
     firstName: user.firstName,
     grade: user.grade ?? "",
     avatar:
-      user.avatar ??
-      `https://api.dicebear.com/9.x/avataaars/svg?seed=${user.firstName}`,
+      user.avatar ?? monogramAvatar(`${user.firstName} ${user.lastName}`),
     schoolId: user.schoolId ?? "",
     schoolState: user.school?.state ?? "FL",
     skills: parseStringArray(user.skills),
@@ -87,7 +87,7 @@ export async function getOrganizationsForStudent(
     distance: org.distance ?? "",
     verified: org.verified,
     avatar:
-      org.avatar ?? `https://api.dicebear.com/9.x/icons/svg?seed=${org.id}`,
+      org.avatar ?? monogramAvatar(org.name, { square: true }),
     following: followingIds.has(org.id),
     upcomingShifts: org._count.shifts,
     moderatorId: org.moderatorId ?? "",
@@ -112,7 +112,7 @@ export async function getModerators(): Promise<OrgModeratorView[]> {
     id: m.id,
     name: `${m.firstName} ${m.lastName}`,
     avatar:
-      m.avatar ?? `https://api.dicebear.com/9.x/avataaars/svg?seed=${m.firstName}`,
+      m.avatar ?? monogramAvatar(`${m.firstName} ${m.lastName}`),
     roleTitle: m.roleTitle ?? "Volunteer Coordinator",
     totalVerifications: countByModerator.get(m.id) ?? 0,
   }));

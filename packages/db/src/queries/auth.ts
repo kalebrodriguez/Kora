@@ -1,3 +1,4 @@
+import { monogramAvatar } from "../avatar";
 import { prisma } from "../client";
 import { toJsonArray } from "../json";
 import { hashPassword, verifyPassword } from "../password";
@@ -8,12 +9,6 @@ export type AuthResult =
   | { ok: false; error: string };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function avatarFor(seed: string, bg: string): string {
-  return `https://api.dicebear.com/9.x/avataaars/svg?seed=${encodeURIComponent(
-    seed,
-  )}&backgroundColor=${bg}`;
-}
 
 function toSessionUser(user: {
   id: string;
@@ -127,7 +122,7 @@ export async function registerStudent(
       lastName,
       grade: `${ordinal[input.gradeLevel]} Grade · ${school.name}`,
       schoolId: school.id,
-      avatar: avatarFor(firstName, "ECEAFB"),
+      avatar: monogramAvatar(`${firstName} ${lastName}`),
     },
   });
 
@@ -196,7 +191,7 @@ export async function registerAdmin(
         lastName,
         roleTitle: "Service-Learning Coordinator",
         schoolId: school.id,
-        avatar: avatarFor(firstName, "DDF0FB"),
+        avatar: monogramAvatar(`${firstName} ${lastName}`),
       },
     });
   });
@@ -261,16 +256,14 @@ export async function registerOrganization(
         firstName,
         lastName,
         roleTitle: input.roleTitle?.trim() || "Volunteer Coordinator",
-        avatar: avatarFor(firstName, "FBE4F1"),
+        avatar: monogramAvatar(`${firstName} ${lastName}`),
       },
     });
     await tx.organization.create({
       data: {
         name: orgName,
         description: input.description.trim(),
-        avatar: `https://api.dicebear.com/9.x/icons/svg?seed=${encodeURIComponent(
-          orgName,
-        )}&backgroundColor=DDF0FB`,
+        avatar: monogramAvatar(orgName, { square: true }),
         verified: true,
         categories: toJsonArray(input.categories),
         moderatorId: moderator.id,

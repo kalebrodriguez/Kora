@@ -1,3 +1,4 @@
+import { monogramAvatar } from "../avatar";
 import { prisma } from "../client";
 import { toJsonArray } from "../json";
 import { hashPassword } from "../password";
@@ -134,9 +135,9 @@ export async function createOrganizationWithModerator(
         firstName: input.moderatorFirstName.trim(),
         lastName: input.moderatorLastName.trim(),
         roleTitle: input.moderatorRoleTitle?.trim() || "Volunteer Coordinator",
-        avatar: `https://api.dicebear.com/9.x/avataaars/svg?seed=${encodeURIComponent(
-          input.moderatorFirstName.trim(),
-        )}&backgroundColor=ECEAFB`,
+        avatar: monogramAvatar(
+          `${input.moderatorFirstName.trim()} ${input.moderatorLastName.trim()}`,
+        ),
       },
     });
 
@@ -144,9 +145,7 @@ export async function createOrganizationWithModerator(
       data: {
         name: input.name.trim(),
         description: input.description.trim(),
-        avatar: `https://api.dicebear.com/9.x/icons/svg?seed=${encodeURIComponent(
-          input.name.trim(),
-        )}&backgroundColor=DDF0FB`,
+        avatar: monogramAvatar(input.name.trim(), { square: true }),
         verified: true,
         distance: input.distance?.trim() || null,
         categories: toJsonArray(input.categories),

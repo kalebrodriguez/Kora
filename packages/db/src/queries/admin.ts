@@ -1,3 +1,4 @@
+import { monogramAvatar } from "../avatar";
 import { prisma } from "../client";
 import type { LogStatus } from "../types";
 
@@ -47,8 +48,7 @@ export async function getAdminContext(
       id: user.id,
       name: `${user.firstName} ${user.lastName}`,
       avatar:
-        user.avatar ??
-        `https://api.dicebear.com/9.x/avataaars/svg?seed=${user.firstName}`,
+        user.avatar ?? monogramAvatar(`${user.firstName} ${user.lastName}`),
     },
     school: {
       id: user.school.id,
@@ -86,8 +86,7 @@ export async function getSchoolCompliance(
       email: s.email,
       grade: s.grade ?? "",
       avatar:
-        s.avatar ??
-        `https://api.dicebear.com/9.x/avataaars/svg?seed=${s.firstName}`,
+        s.avatar ?? monogramAvatar(`${s.firstName} ${s.lastName}`),
       verifiedHours: verified.reduce((sum, l) => sum + l.hours, 0),
       pendingHours: pending.reduce((sum, l) => sum + l.hours, 0),
       flaggedCount: flagged.length,

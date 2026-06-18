@@ -1,5 +1,6 @@
 export { prisma, defaultSqliteUrl } from "./client";
 export { hashPassword, verifyPassword } from "./password";
+export { monogramAvatar } from "./avatar";
 export { parseStringArray, toJsonArray } from "./json";
 export { formatLogDate, formatShiftDate } from "./format";
 export * from "./types";

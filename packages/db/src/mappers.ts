@@ -9,8 +9,15 @@ import type {
   TintKey,
 } from "./types";
 
+// Soft branded gradient used when a shift has no cover image.
 const FALLBACK_IMG =
-  "https://api.dicebear.com/9.x/shapes/svg?seed=Kora&backgroundColor=ECEAFB";
+  "data:image/svg+xml," +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">` +
+      `<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">` +
+      `<stop offset="0" stop-color="#D7F4F2"/><stop offset="1" stop-color="#ECEAFB"/>` +
+      `</linearGradient></defs><rect width="600" height="400" fill="url(#g)"/></svg>`,
+  );
 
 export type ShiftWithOrg = Prisma.ShiftGetPayload<{
   include: { org: true; _count: { select: { commitments: true } } };
