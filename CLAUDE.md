@@ -5,7 +5,7 @@ Kora is an API-first SaaS platform for high school community service compliance.
 B2B revenue model: $5K–$10K annual licenses to school districts.
 Built by a high school founder with extreme founder-market fit.
 
-## Current State (2026-06-12)
+## Current State (2026-06-18)
 **The MVP loop is fully functional on a real local stack** — no mock data:
 student commits to shift → moderator displays HMAC-signed QR code →
 student checks in → verified hours flow to ledger/goals/notifications.
@@ -13,8 +13,14 @@ Moderators can also manually verify/flag pending hours, and publish new
 shifts (/org/shifts/new). Admins onboard partner orgs + moderator logins
 (/admin/organizations/new).
 
-Demo accounts (password `demo1234`): `student@demo.kora`, `org@demo.kora`, `admin@demo.kora`.
-`npm run setup && npm run dev` — zero env vars needed.
+**Self-serve sign-up at `/signup`** — pick a role: Student (joins an existing
+school), Organization (creates org + moderator login), or School admin
+(bootstraps a new School + first admin). Admin state choices are limited to
+compliance-supported states (FL, WA). No seeded accounts by default.
+
+`npm run setup && npm run dev` — starts a **brand-new empty database**, zero
+env vars needed. `npm run db:reset` re-empties it; `npm run setup:demo`
+loads the old demo data/accounts (password `demo1234`) for reference.
 
 ## Monorepo Layout
 - `apps/web` — Student portal (`app/(student)`) + Org portal (`app/org`) + Admin console (`app/admin`) + `/login`
